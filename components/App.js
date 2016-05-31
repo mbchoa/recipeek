@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import RecipeList from './RecipeList';
-import 'whatwg-fetch';
+import apiHelper from '../utils/apiHelper';
 
 class App extends Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class App extends Component {
 
     this.state = {
       searchInput: '',
+      recipesData: [],
     };
     this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
     this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
@@ -23,6 +24,7 @@ class App extends Component {
   handleSubmitSearch(e) {
     e.preventDefault();
     console.log(`search for: ${this.state.searchInput}`);
+
   }
 
   render() {
@@ -31,7 +33,7 @@ class App extends Component {
         <SearchBar
           onTextChange={this.handleSearchTextChange}
           onSubmitSearch={this.handleSubmitSearch} />
-        <RecipeList />
+        <RecipeList recipesArr={this.state.recipesData} />
       </div>
     );
   }
