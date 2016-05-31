@@ -4,7 +4,8 @@
   "description": "Web app to quickly search and save cooking recipes and display the pertinent nutritional info in the form of keywords to the user in small snippets to allow quick review of recipes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watchify": "watchify -t [ babelify --presets [ es2015 react ] ] index.js -o bundle.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,21 @@
   "bugs": {
     "url": "https://github.com/mbchoa/recipeek/issues"
   },
-  "homepage": "https://github.com/mbchoa/recipeek#readme"
+  "homepage": "https://github.com/mbchoa/recipeek#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.3.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "watchify": "^3.7.0",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.11.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1"
+  }
 }
