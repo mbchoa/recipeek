@@ -1,8 +1,16 @@
 import React from 'react';
 
-const SearchBar = (props) =>
-  <input
-    type="text"
-    placeholder="Search for a recipe" />;
+const SearchBar = ({ onTextChange, onSubmitSearch }) => {
+  return (
+    <form onSubmit={onSubmitSearch}>
+      <input
+        type="text"
+        placeholder="Search for a recipe"
+        onChange={onTextChange} />
+    </form>
+
+  );
+}
+
 
 module.exports = SearchBar;
