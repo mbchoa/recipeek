@@ -1,0 +1,19 @@
+{
+  "name": "recipeek",
+  "version": "1.0.0",
+  "description": "Web app to quickly search and save cooking recipes and display the pertinent nutritional info in the form of keywords to the user in small snippets to allow quick review of recipes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbchoa/recipeek.git"
+  },
+  "author": "Michael-Bryant Choa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbchoa/recipeek/issues"
+  },
+  "homepage": "https://github.com/mbchoa/recipeek#readme"
+}
