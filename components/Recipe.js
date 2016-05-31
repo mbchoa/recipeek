@@ -1,6 +1,10 @@
 import React from 'react';
 
+const preStyle = {
+  backgroundColor: 'light-gray',
+};
+
 const Recipe = ({ index }) =>
-  (<div>Recipe {`#${index}`}</div>);
+  (<pre style={preStyle}>Recipe {`#${index}`}</pre>);
 
 module.exports = Recipe;

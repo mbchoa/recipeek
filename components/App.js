@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import RecipeList from './RecipeList';
+import 'whatwg-fetch';
 
 class App extends Component {
   constructor(props) {
