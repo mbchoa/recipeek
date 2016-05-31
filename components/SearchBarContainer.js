@@ -1,4 +1,4 @@
-  import React, { Component } from 'react';
+import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 
 class SearchBarContainer extends Component {
@@ -6,7 +6,7 @@ class SearchBarContainer extends Component {
     super(props);
     this.state = {
       searchInput: '',
-    }
+    };
     this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
     this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
   }
@@ -14,7 +14,7 @@ class SearchBarContainer extends Component {
   handleSearchTextChange(e) {
     this.setState({
       searchInput: e.target.value,
-    })
+    });
   }
 
   handleSubmitSearch(e) {
@@ -23,9 +23,11 @@ class SearchBarContainer extends Component {
   }
 
   render() {
-    return <SearchBar
-      onTextChange={this.handleSearchTextChange}
-      onSubmitSearch={this.handleSubmitSearch}/>
+    return (
+      <SearchBar
+        onTextChange={this.handleSearchTextChange}
+        onSubmitSearch={this.handleSubmitSearch} />
+    );
   }
 }
 

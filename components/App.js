@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SearchBarContainer from './SearchBarContainer';
+import RecipeList from './RecipeList';
 
-const App = (props) =>
-  <div>
-    <SearchBarContainer />
-  </div>;
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBarContainer />
+        <RecipeList />
+      </div>
+    );
+  }
+}
 
 module.exports = App;
