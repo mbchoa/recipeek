@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Recipe from './Recipe';
 
-class RecipeList extends Component {
-  render() {
-    return (
-      <div>
-        <h3>Recipes</h3>
-        {this.props.recipesArr.map((recipe, i) => {
-          return <Recipe index={i} key={i} />
-        })}
-      </div>
-    );
-  }
-}
+const style = {
+  display: 'inline-block',
+};
+
+const RecipeList = ({ recipesData }) =>
+  <div style={style}>
+    <h3>Recipes</h3>
+    {recipesData.map((recipe, i) =>
+      <Recipe index={i} key={i} data={recipe} />
+    )}
+  </div>;
 
 module.exports = RecipeList;
