@@ -2,15 +2,18 @@ import React from 'react';
 import Recipe from './Recipe';
 
 const style = {
-  display: 'inline-block',
+  display: 'flex',
+  flexWrap: 'wrap',
 };
 
 const RecipeList = ({ recipesData }) =>
-  <div style={style}>
-    <h3>Recipes</h3>
-    {recipesData.map((recipe, i) =>
-      <Recipe index={i} key={i} data={recipe} />
-    )}
+  <div>
+    <hr/>
+    <div style={style}>
+      {recipesData.map((recipe, i) =>
+        <Recipe index={i} key={i} data={recipe} />
+      )}
+    </div>
   </div>;
 
 module.exports = RecipeList;
