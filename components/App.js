@@ -36,8 +36,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="text-center">
-        <h1>Recipeek</h1>
+      <div>
+        <h1 className="text-center">Recipeek</h1>
         <SearchBar
           onTextChange={this.handleSearchTextChange}
           onSubmitSearch={this.handleSubmitSearch} />
