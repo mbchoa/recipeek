@@ -12,21 +12,28 @@ function titleCase(sentence) {
   return sentence.split(' ').map(capitalize).join(' ');
 }
 
-const recipeContainerStyle = {
-  border: '1 solid black',
-};
-
 const recipeImgStyle = {
   height: 200,
 };
 
 const Recipe = ({ index, data }) =>
-  <div style={recipeContainerStyle}>
+  <div className="thumbnail">
     <a href={data.source_url}>
       <img style={recipeImgStyle} src={data.image_url}/>
     </a>
-    <h5>{titleCase(data.title)}</h5>
-    <h6>by <a href={data.publisher_url}>{data.publisher}</a></h6>
+    <div className="caption">
+      <h5>{titleCase(data.title)}</h5>
+      <h6>by <a href={data.publisher_url}>{data.publisher}</a></h6>
+    </div>
   </div>
 
 module.exports = Recipe;
+
+{/*<div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>*/}
