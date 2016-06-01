@@ -13,7 +13,7 @@ function titleCase(sentence) {
 }
 
 const recipeImgStyle = {
-  height: 200,
+  height: 300,
 };
 
 const Recipe = ({ index, data }) =>
