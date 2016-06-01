@@ -7,6 +7,6 @@ module.exports = (req, res, next) => {
     // req.parsedData = JSON.parse(html);
     // next();
   // });
-  req.parsedData = dummyData;
+  req.parsedData = dummyData.recipes;
   next();
 };

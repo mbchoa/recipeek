@@ -14,14 +14,13 @@ const getRecipePageHTML = url =>
 
 module.exports = {
   getAllScrapedRecipePages: (req, res, next) => {
-    const recipesSourceUrlArr = req.parsedData.recipes.map(recipeData => recipeData.source_url);
+    const recipesSourceUrlArr = req.parsedData.map(recipeData => recipeData.source_url);
     const recipesSourceUrlPromisesArr = recipesSourceUrlArr.map(getRecipePageHTML);
     Promise
       .all(recipesSourceUrlPromisesArr)
       .then(recipeHtmlArr => {
-        req.parsedData.recipes = req.parsedData.recipes.map((recipeData, i) => {
-          recipeData.body = recipeHtmlArr[i].body;
-          return recipeData;
+        req.recipeBodyArr = req.parsedData.map((recipeData, i) => {
+          return recipeHtmlArr[i].body;
         });
         next();
       }).catch(err => console.log('error resolving recipes', err));
