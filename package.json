@@ -26,10 +26,12 @@
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "jquery": "^2.2.4",
+    "lodash": "^4.13.1",
     "nlp_compromise": "^5.1.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "request": "^2.72.0",
+    "striptags": "^2.1.1",
     "uglify-js": "^2.6.2",
     "watchify": "^3.7.0",
     "whatwg-fetch": "^1.0.0"

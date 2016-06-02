@@ -11,8 +11,8 @@ app.use(cors());
 app.get('/search/:ingredient',
   searchController,
   scraperController.getAllScrapedRecipePages,
-  keywordFilterController,
   nlpController,
+  keywordFilterController,
   (req, res) => {
     res.send(req.parsedData);
   });
