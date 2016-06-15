@@ -10,6 +10,7 @@ const htmlToNlpTerms = html => {
 };
 
 module.exports = (req, res, next) => {
+  const startTime = Date.now();
   console.log('nlp controller entry point');
   req.parsedData = req.parsedData.map((recipeData, i) => {
     recipeData.keywords = htmlToNlpTerms(req.recipeBodyArr[i])
@@ -17,5 +18,6 @@ module.exports = (req, res, next) => {
       .map(term => term.text);
     return recipeData;
   });
+  console.log('nlp parsing execution time = ', Date.now() - startTime);
   next();
 };

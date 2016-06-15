@@ -14,11 +14,13 @@ const getRecipePageHTML = url =>
 
 module.exports = {
   getAllScrapedRecipePages: (req, res, next) => {
+    const startTime = Date.now();
     const recipesSourceUrlArr = req.parsedData.map(recipeData => recipeData.source_url);
     const recipesSourceUrlPromisesArr = recipesSourceUrlArr.map(getRecipePageHTML);
     Promise
       .all(recipesSourceUrlPromisesArr)
       .then(recipeHtmlArr => {
+        console.log('fetch url pages round trip = ', Date.now() - startTime);
         req.recipeBodyArr = req.parsedData.map((recipeData, i) => {
           return recipeHtmlArr[i].body;
         });
