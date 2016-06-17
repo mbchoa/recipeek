@@ -14,7 +14,7 @@ const top3CommonKeyWords = keywordsArr => {
 };
 
 module.exports = (req, res, next) => {
-  console.log('-> key word filter controller entry point');
+  // console.log('-> key word filter controller entry point');
   const startTime = Date.now();
   req.parsedData.forEach(recipeData => {
     recipeData.keywords = array.uniq(recipeData.keywords)
@@ -22,6 +22,6 @@ module.exports = (req, res, next) => {
       .filter(term => foodAdjectives.indexOf(term.toLowerCase()) >= 0)
       .slice(0, 3);
   });
-  console.log(`* keyword filter roundtrip time = ${Date.now() - startTime}`);
+  // console.log(`* keyword filter roundtrip time = ${Date.now() - startTime}`);
   next();
 };

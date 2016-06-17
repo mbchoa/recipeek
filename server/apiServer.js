@@ -18,6 +18,7 @@ app.get('/search/:ingredient',
   keywordFilterController,
   (req, res) => {
     res.send(req.parsedData);
+    console.log('round trip time', Date.now() - req.start)
   });
 
 app.listen(process.env.PORT || 3000, function() {
