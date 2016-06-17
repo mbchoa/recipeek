@@ -20,4 +20,6 @@ app.get('/search/:ingredient',
     res.send(req.parsedData);
   });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000, function() {
+  console.log(`Express server listening on port ${this.address().port} in ${app.settings.env} mode`);
+});
