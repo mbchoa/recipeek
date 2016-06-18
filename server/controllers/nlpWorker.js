@@ -10,7 +10,7 @@ const htmlToNlpTerms = html => {
 };
 
 module.exports = function(html, callback) {
-//   console.log('* running process id: ', process.pid);
+  console.log('* running process id: ', process.pid);
   callback(null, htmlToNlpTerms(html)
     .filter(term => term.tag === 'Adjective')
     .map(term => term.text));
