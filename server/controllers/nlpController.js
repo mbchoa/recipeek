@@ -1,5 +1,8 @@
 const workerFarm = require('worker-farm')
-  , nlpWorkers = workerFarm(require.resolve('./nlpWorker'));
+  , nlpWorkers = workerFarm({
+      maxCallsPerWorker: 4,
+    },
+    require.resolve('./nlpWorker'));
 var ret = 0;
 
 module.exports = (req, res, next) => {
