@@ -1,7 +1,7 @@
 const request = require('request');
 
 module.exports = (req, res, next) => {
-  // console.log('-> search controller entry point');
+  console.log('-> search controller entry point');
   // console.log(`* request search for ingredient: ${req.params.ingredient}`);
   // const startTime = Date.now();
   req.start = Date.now();

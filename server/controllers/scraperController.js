@@ -14,7 +14,7 @@ const getRecipePageHTML = url =>
 
 module.exports = {
   getAllScrapedRecipePages: (req, res, next) => {
-    // console.log('-> scraper controller entry point');
+    console.log('-> scraper controller entry point');
     const startTime = Date.now();
     const recipesSourceUrlArr = req.parsedData.map(recipeData => recipeData.source_url);
     const recipesSourceUrlPromisesArr = recipesSourceUrlArr.map(getRecipePageHTML);
