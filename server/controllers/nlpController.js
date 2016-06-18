@@ -3,7 +3,7 @@ var ret = 0;
 
 module.exports = (req, res, next) => {
   console.log('-> nlp controller entry point');
-  let nlpWorkers = workerFarm({
+  var nlpWorkers = workerFarm({
       maxCallsPerWorker: 4,
     },
     require.resolve('./nlpWorker'));
