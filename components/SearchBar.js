@@ -18,5 +18,4 @@ const SearchBar = ({ onTextChange, onSubmitSearch }) => {
   );
 }
 
-
-module.exports = SearchBar;
+export default SearchBar;
