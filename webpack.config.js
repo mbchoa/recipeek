@@ -4,16 +4,14 @@ var webpack = require('webpack');
 var config = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        './index.js'
+        './index.js',
+        'webpack-hot-middleware/client'
     ],
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/public/'
+        publicPath: '/dist/'
     },
-    plugins: [
-        new webpack.NoErrorsPlugin()
-    ],
     module: {
         loaders: [
             {
@@ -22,7 +20,11 @@ var config = {
                 exclude: /node_modules/
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
 };
 
 module.exports = config;
