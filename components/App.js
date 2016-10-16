@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 import RecipeList from './RecipeList';
 import apiHelper from '../utils/apiHelper';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
 
@@ -43,5 +43,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
