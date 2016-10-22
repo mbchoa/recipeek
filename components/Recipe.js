@@ -1,16 +1,13 @@
 import React from 'react';
 
+import {
+  capitalize,
+  titleCase
+} from '../utils/stringHelper';
+
 const preStyle = {
   backgroundColor: 'light-gray',
 };
-
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
-
-function titleCase(sentence) {
-  return sentence.split(' ').map(capitalize).join(' ');
-}
 
 const recipeImgStyle = {
   height: 300,
@@ -20,7 +17,10 @@ const keywordStyle = {
   fontSize: 14,
 };
 
-const Recipe = ({ index, data }) =>
+const Recipe = ({ 
+  index,
+  data 
+}) =>
   <div className="thumbnail">
     <a href={data.source_url}>
       <img style={recipeImgStyle} src={data.image_url}/>
@@ -36,4 +36,4 @@ const Recipe = ({ index, data }) =>
     </div>
   </div>
 
-module.exports = Recipe;
+export default Recipe;
