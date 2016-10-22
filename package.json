@@ -4,11 +4,23 @@
   "description": "Web app to quickly search and save cooking recipes and display the pertinent nutritional info in the form of keywords to the user in small snippets to allow quick review of recipes.",
   "main": "index.js",
   "scripts": {
+    "build:wp": "webpack --progress -p",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watchify": "watchify -t [ babelify --presets [ es2015 react ] ] index.js -o public/bundle.js",
     "build": "browserify -t [ babelify --presets [ es2015 react ] ] index.js -o public/bundle.js",
-    "start": "nodemon server/apiServer.js",
-    "lint": "node_modules/.bin/eslint "
+    "start:dev": "node server.js",
+    "start": "nodemon server/apiServer.js"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ],
+    "env": {
+      "development": {
+        "presets": ["react-hmre"]
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -43,10 +55,17 @@
   },
   "devDependencies": {
     "browserify": "^13.0.1",
+    "babel": "^6.5.2",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-react-hmre": "^1.1.1",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.2",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-plugin-react": "^5.1.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.0"
   }
 }

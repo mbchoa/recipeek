@@ -16,4 +16,4 @@ const RecipeList = ({ recipesData }) =>
     </div>
   </div>;
 
-module.exports = RecipeList;
+export default RecipeList;
