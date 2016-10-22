@@ -18,7 +18,9 @@
     ],
     "env": {
       "development": {
-        "presets": ["react-hmre"]
+        "presets": [
+          "react-hmre"
+        ]
       }
     }
   },
@@ -41,7 +43,7 @@
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "jquery": "^2.2.4",
-    "lodash": "^4.13.1",
+    "lodash": "^4.16.4",
     "nlp_compromise": "^5.1.0",
     "nodemon": "^1.9.2",
     "react": "^15.1.0",
@@ -54,11 +56,11 @@
     "worker-farm": "^1.3.1"
   },
   "devDependencies": {
-    "browserify": "^13.0.1",
     "babel": "^6.5.2",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-react-hmre": "^1.1.1",
+    "browserify": "^13.0.1",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.1",
