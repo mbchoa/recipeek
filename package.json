@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watchify": "watchify -t [ babelify --presets [ es2015 react ] ] index.js -o public/bundle.js",
     "build": "browserify -t [ babelify --presets [ es2015 react ] ] index.js -o public/bundle.js",
-    "start": "nodemon server/apiServer.js"
+    "start": "nodemon server/apiServer.js",
+    "lint": "node_modules/.bin/eslint "
   },
   "repository": {
     "type": "git",
