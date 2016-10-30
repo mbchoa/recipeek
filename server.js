@@ -1,27 +1,19 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config.js');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config');
 
-var port = 3000;
-var app = express();
-var compiler = webpack(config);
-
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
-
-app.use(require('webpack-hot-middleware')(compiler));
-
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(port, function onAppListening(err) {
-    if (err) {
-        console.error(err);
-    } else {
-        console.info('==> 🚧  Webpack development server listening on port %s', port);
+const compiler = webpack(config);
+const server = new WebpackDevServer(compiler, {
+    publicPath: config.output.publicPath,
+    hot: true,
+    historyApiFallback: true,
+    proxy: {
+        "/api/*": "http://localhost:3000", // <-- Proxy /api/search/:ingredient to http://localhost:3000/api/search/:ingredient
     }
+}).listen(8080, 'localhost', function (err, result) {
+    if (err) return console.log(err);
+    console.log('WDS listening on http://localhost:8080');
+
+    // start express api server
+    const app = require('./server/apiServer.js');
 });
