@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  capitalize,
-  titleCase
-} from '../utils/stringHelper';
+import { titleCase } from '../helpers/string';
 
 const preStyle = {
   backgroundColor: 'light-gray',
