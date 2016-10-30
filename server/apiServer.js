@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -9,18 +10,20 @@ const nlpController = require('./controllers/nlpController');
 
 app.use(cors());
 app.use(compression());
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(path.join(__dirname, '/..')));
 
-app.get('/search/:ingredient',
+app.get('/api/search/:ingredient',
   searchController,
   scraperController.getAllScrapedRecipePages,
   nlpController,
   keywordFilterController,
   (req, res) => {
     res.send(req.parsedData);
-    console.log('round trip time', Date.now() - req.start)
+    console.log('round trip time', Date.now() - req.start);
   });
 
 app.listen(process.env.PORT || 3000, function() {
   console.log(`Express server listening on port ${this.address().port} in ${app.settings.env} mode`);
 });
+
+module.exports = app;

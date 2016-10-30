@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 
-const SEARCH_ENDPOINT = 'search/';
+const SEARCH_ENDPOINT = 'api/search/';
 
 const checkStatus = response => {
   if (response.status >= 200 && response.status < 300) {
