@@ -4,9 +4,10 @@
   "description": "Web app to quickly search and save cooking recipes and display the pertinent nutritional info in the form of keywords to the user in small snippets to allow quick review of recipes.",
   "main": "index.js",
   "scripts": {
-    "build:wp": "webpack --progress -p",
-    "start:dev": "node server.js",
-    "start": "nodemon server/apiServer.js"
+    "start:express": "nodemon server/apiServer.js",
+    "start:dev": "export NODE_ENV=development node server.js",
+    "bundle": "webpack --progress -p --config webpack.prod.config.js",
+    "build": "npm run bundle && npm run start:express && open dist/index.html"
   },
   "babel": {
     "presets": [
