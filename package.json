@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:express": "nodemon server/apiServer.js",
-    "start:dev": "export NODE_ENV=development node server.js",
+    "start:dev": "export NODE_ENV=development && node server.js",
     "bundle": "webpack --progress -p --config webpack.prod.config.js",
     "build": "npm run bundle && npm run start:express && open dist/index.html"
   },
