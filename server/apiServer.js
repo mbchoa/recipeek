@@ -33,3 +33,5 @@ app.get('/api/search/:ingredient',
 app.listen(process.env.PORT || 3000, function() {
   console.log(`Express API server listening on port ${this.address().port} in ${app.settings.env} mode`);
 });
+
+module.exports = app;
