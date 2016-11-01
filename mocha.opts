@@ -1,0 +1,4 @@
+--require test/common
+--recursive
+--bail
+server/controllers
