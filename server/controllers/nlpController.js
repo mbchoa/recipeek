@@ -1,6 +1,6 @@
 const workerFarm = require('worker-farm')
-  , nlpWorkers = workerFarm(require.resolve('./nlpWorker'));
-var ret = 0;
+const nlpWorkers = workerFarm(require.resolve('./nlpWorker'));
+let ret = 0;
 
 module.exports = (req, res, next) => {
   console.log('-> nlp controller entry point');

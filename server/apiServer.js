@@ -19,7 +19,7 @@ app.use(express.static(path.join(
 
 app.get('/api/search/:ingredient',
   searchController,
-  scraperController.getAllScrapedRecipePages,
+  scraperController,
   nlpController,
   keywordFilterController,
   (req, res) => {

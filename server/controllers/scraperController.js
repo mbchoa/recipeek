@@ -12,8 +12,7 @@ const getRecipePageHTML = url =>
     });
   });
 
-module.exports = {
-  getAllScrapedRecipePages: (req, res, next) => {
+module.exports = (req, res, next) => {
     console.log('-> scraper controller entry point');
     const startTime = Date.now();
     const recipesSourceUrlArr = req.parsedData.map(recipeData => recipeData.source_url);
@@ -27,5 +26,4 @@ module.exports = {
         });
         next();
       }).catch(err => console.log('error resolving recipes', err));
-  },
 };
