@@ -1,3 +1,7 @@
 instrumentation:
     excludes:
         - '**/*.spec.js'
+reporting:
+    reports:
+        - html
+        - text-summary
