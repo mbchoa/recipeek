@@ -1,10 +1,6 @@
-import React from 'react';
-
+import React, { PropTypes } from 'react';
+import { map } from 'lodash';
 import { titleCase } from '../helpers/string';
-
-const preStyle = {
-  backgroundColor: 'light-gray',
-};
 
 const recipeImgStyle = {
   height: 300,
@@ -14,23 +10,43 @@ const keywordStyle = {
   fontSize: 14,
 };
 
-const Recipe = ({ 
-  index,
-  data 
+const Recipe = ({
+  image_url,
+  keywords,
+  publisher,
+  publisher_url,
+  source_url,
+  title,
 }) =>
   <div className="thumbnail">
-    <a href={data.source_url}>
-      <img style={recipeImgStyle} src={data.image_url}/>
+    <a href={source_url}>
+      <img style={recipeImgStyle} src={image_url} alt={title} />
     </a>
     <div className="caption">
-      <h5>{titleCase(data.title)}</h5>
-      <h6>by <a href={data.publisher_url}>{data.publisher}</a></h6>
+      <h5>{titleCase(title)}</h5>
+      <h6>by <a href={publisher_url}>{publisher}</a></h6>
       <div className="keywords">
-        {data.keywords.map(word =>
-          <span style={keywordStyle} className="label label-pill label-info">{word}</span>
-        )}
+        {
+          map(keywords, (word, key) =>
+            <span {...{
+              key,
+              style: keywordStyle,
+              className: 'label label-pill label-info',
+            }} >
+                {word}
+            </span>
+          )
+        }
       </div>
     </div>
-  </div>
+  </div>;
+
+Recipe.propTypes = {
+  image_url: PropTypes.string,
+  keywords: PropTypes.array,
+  publisher: PropTypes.string,
+  source_url: PropTypes.string,
+  title: PropTypes.string,
+};
 
 export default Recipe;
