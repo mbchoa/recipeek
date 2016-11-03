@@ -1,4 +1,5 @@
 --require test/common
+--require babel-register
 --recursive
 --bail
 server/controllers
