@@ -1,4 +1,7 @@
-node_modules
-bundle.js
 .eslintrc
+.nyc_output
+.vscode
+bundle.js
 coverage
+node_modules
+yarn-error.log
