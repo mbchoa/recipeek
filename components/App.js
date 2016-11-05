@@ -27,7 +27,7 @@ export default class App extends Component {
     apiHelper.search(this.state.searchInput)
       .then(apiHelper.checkStatus)
       .then(apiHelper.parseJSON)
-      .then(data => this.setState({ recipesData: data }))
+      .then(response => this.setState({ recipesData: response.data }))
       .catch(error => console.log(error));
   }
 
