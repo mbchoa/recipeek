@@ -1,4 +1,4 @@
-import { attempt } from 'lodash';
+import { attempt, isError } from 'lodash';
 import t from 'tcomb';
 
 import { makeRequest } from '../../helpers/request';
@@ -15,11 +15,22 @@ export const createRequestOptions = t.func(
   },
 }));
 
-const createResult = (response) => {
-  const payload = attempt(JSON.parse, response);
+export const createResult = ({ status, text }) => {
+  const payload = attempt(JSON.parse, text);
+    switch(status) {
+        case OK:
+        case NOT_FOUND:
+            return payload;
 
+        default:
+          return new Error(status);
+    }
 };
 
-export default function search() {
-  
+export default function search(request, ingredient) {
+  return makeRequest(
+    request,
+    createRequestOptions(ingredient),
+    createResult
+  );
 }

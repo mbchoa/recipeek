@@ -1,4 +1,4 @@
-import { createRequestOptions } from './search';
+import search, { createRequestOptions } from './search';
 import { RequestOptions } from '../common';
 
 describe('v2 Search API Tests', () => {
