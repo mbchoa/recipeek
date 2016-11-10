@@ -69,6 +69,7 @@
     "compression": "^1.6.2",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "http-status-codes": "^1.0.6",
     "jquery": "^2.2.4",
     "lodash": "^4.16.4",
     "mocha": "^3.1.2",
@@ -80,7 +81,7 @@
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "request": "^2.72.0",
+    "request": "^2.78.0",
     "tcomb": "^3.2.15",
     "whatwg-fetch": "^1.0.0",
     "worker-farm": "^1.3.1"
