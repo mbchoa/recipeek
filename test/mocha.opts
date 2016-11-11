@@ -2,3 +2,4 @@
 --require test/setup.js
 --ui bdd
 --colors
+--timeout 10000
