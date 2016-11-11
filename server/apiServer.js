@@ -8,6 +8,10 @@ import {
   scraperController,
   searchController,
 } from './controllers';
+import request from 'request';
+
+// config
+require('dotenv').config();
 
 const app = express();
 
@@ -28,13 +32,25 @@ app.get('/api/search/:ingredient',
   (req, res) => {
     res.set({
       'Cache-Control': 'public, max-age=86400',
+      'Content-Type': 'application/json',
     });
-    res.send(req.parsedData);
+    res.send({
+      status: 200,
+      data: req.parsedData,
+    });
     console.log('round trip time', Date.now() - req.start);
   });
 
 app.get('/api/v2/search/:ingredient', (req, res) => {
-  
+  request(`https://api.edamam.com/search?q=${req.params.ingredient}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`, (err, resp, payload) => {
+    if (err) {
+      return console.log(err);
+    }
+    res.send({
+      status: 200,
+      data: JSON.parse(payload),
+    });
+  });
 });
 
 app.listen(process.env.PORT || 3000, function () {
