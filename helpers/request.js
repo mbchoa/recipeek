@@ -10,23 +10,26 @@ function checkStatus(response) {
 
 export function makeRequest(
   request = fetch,
-  requestOptions = {},
+  options = {},
   createResult = identity
 ) {
-  return request(requestOptions.url, omit(requestOptions, 'url'))
-    .then(response => {
-      let result;
-      try {
-        result = createResult(response.text());
-      } catch (err) {
-        return Promise.reject(err);
-      }
+  return new Promise((resolve, reject) => {
+    request(options.url, omit(options, 'url'))
+      .then(response => {
+        let result;
+        try {
+          result = createResult(response.text());
+        } catch (err) {
+          return reject(err);
+        }
 
-      return !isError(checkStatus(response))
-        ? result
-        : Promise.reject(result);
-    })
-    .catch(err => console.log(err));
+        if (!isError(checkStatus(response))) {
+          return resolve(result);
+        }
+
+        reject(new Error(`Unhandled status code: ${response.status} received.`));
+      });
+  });
 }
 
 export function createMockRequest() {
