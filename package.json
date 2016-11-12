@@ -33,8 +33,7 @@
     "branches": 100,
     "include": [
       "api-clients/**/*.js",
-      "helpers/**/*.js",
-      "server/controllers/**/*.js"
+      "helpers/**/*.js"
     ],
     "exclude": [
       "**/*.spec.js",

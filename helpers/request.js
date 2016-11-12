@@ -13,37 +13,69 @@ export function makeRequest(
   requestOptions = {},
   createResult = identity
 ) {
-  return new Promise((resolve, reject) => {
-    fetch(requestOptions.url, omit(requestOptions, 'url'))
-      .then(response => {
-        let result;
-        try {
-          result = createResult(response.json());
-        } catch (err) {
-          return reject(new Error(response.statusText));
-        }
+  return request(requestOptions.url, omit(requestOptions, 'url'))
+    .then(response => {
+      let result;
+      try {
+        result = createResult(response.text());
+      } catch (err) {
+        return Promise.reject(err);
+      }
 
-        return !isError(checkStatus(response))
-          ? resolve(result)
-          : reject(result);
-      })
-      .catch(err => reject(err));
-  });
+      return !isError(checkStatus(response))
+        ? result
+        : Promise.reject(result);
+    })
+    .catch(err => console.log(err));
 }
 
 export function createMockRequest() {
   const requests = [];
 
-  function request(options, mockResponse) {
-    requests.push(mockResponse);
+  function request(url, options) {
+    let resolver;
+    let rejector;
+    const promise = new Promise((resolve, reject) => {
+      resolver = resolve;
+      rejector = reject;
+    });
+
+    requests.push({
+      rejector,
+      resolver,
+    });
+
+    return promise;
   }
 
-  function respond(response) {
+  function validateResponse() {
     if (!requests.length) {
-      throw new Error('A response was provided but no request was expecting it');
+      throw new Error('A response was provided, but no request was expecting it');
     }
-    requests.shift()(response);
   }
 
-  return { request, respond };
+  function decorateResponse(response) {
+    return {
+      text() {
+        return response;
+      },
+      status: response.status,
+    };
+  }
+
+  function resolveResponse(response) {
+    validateResponse();
+    requests
+      .shift()
+      .resolver(decorateResponse(response));
+  }
+
+  function rejectResponse(response) {
+    validateResponse();
+    requests
+      .shift()
+      .rejector(decorateResponse(response));
+  }
+
+  return { rejectResponse, request, resolveResponse };
 }

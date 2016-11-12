@@ -4,6 +4,7 @@ import { NOT_FOUND, OK } from 'http-status-codes';
 
 import { makeRequest } from '../../helpers/request';
 import { RequestOptions } from '../common';
+import Recipes from './models/Recipes';
 
 export const createRequestOptions = t.func(
   [t.String],
@@ -21,8 +22,10 @@ export const createResult = ({ status, data }) => {
   switch (status) {
     case OK:
     case NOT_FOUND:
-      return payload;
-
+      if (!isError(payload)) {
+        return Recipes.of(payload);
+      }
+      
     default:
       return new Error(status);
   }
