@@ -1,4 +1,4 @@
-import { omit } from 'lodash';
+import { noop, omit } from 'lodash';
 
 import search, { createRequestOptions } from './search';
 import { RequestOptions } from '../common';
@@ -22,7 +22,7 @@ describe('v2 Search API Tests', () => {
 
     it('should call request with requestOptions', () => {
       const request = sinon.stub();
-      request.returns(new Promise(() => {}, () => {}));
+      request.returns(new Promise(noop, noop));
       const requestOptions = createRequestOptions('chicken');
 
       search(request, 'chicken');

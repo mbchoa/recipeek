@@ -1,7 +1,9 @@
+import { partial } from 'lodash';
+
 import search from './search';
 
-export default function create() {
+export default function createApiClient({ request }) {
   return {
-    search,
+    search: partial(search, request),
   };
 }
