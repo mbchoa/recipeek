@@ -1,13 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const config = {
-    devtool: 'cheap-module-eval-source-map',
+module.exports = {
+    devtool: 'cheap-module-source-map',
     entry: [
         './index.js',
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '..', 'dist'),
         filename: 'bundle.js',
         publicPath: '/dist/',
     },
@@ -22,9 +22,15 @@ const config = {
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
-            mangle: true,
-            comments: false,
+            compress: {
+                warnings: false,
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false,
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
@@ -33,5 +39,3 @@ const config = {
         }),
     ],
 };
-
-module.exports = config;

@@ -11,7 +11,10 @@ import {
 import request from 'request';
 
 // config
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  console.log('dotenv config executing');
+  require('dotenv').config();
+}
 
 const app = express();
 
@@ -21,7 +24,7 @@ app.use(express.static(path.join(
   __dirname,
   process.env.NODE_ENV === 'development'
     ? '/..'
-    : '/../dist'
+    : ''
 )));
 
 app.get('/api/search/:ingredient',
@@ -51,10 +54,11 @@ app.get('/api/v2/search/:ingredient', (req, res) => {
       data: JSON.parse(payload),
     });
   });
-});
+})
 
+// test cicd
 app.listen(process.env.PORT || 3000, function () {
-  console.log(`Express API server listening on port ${this.address().port} in ${app.settings.env} mode`);
+  console.log(`Express API server listening on port ${this.address().port} in ${process.env.NODE_ENV} mode`);
 });
 
 export default app;
