@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const config = {
+module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
         './index.js',
@@ -33,5 +33,3 @@ const config = {
         }),
     ],
 };
-
-module.exports = config;

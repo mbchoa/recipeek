@@ -21,7 +21,7 @@ app.use(express.static(path.join(
   __dirname,
   process.env.NODE_ENV === 'development'
     ? '/..'
-    : '/../dist'
+    : ''
 )));
 
 app.get('/api/search/:ingredient',
@@ -54,7 +54,7 @@ app.get('/api/v2/search/:ingredient', (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log(`Express API server listening on port ${this.address().port} in ${app.settings.env} mode`);
+  console.log(`Express API server listening on port ${this.address().port} in ${process.env.NODE_ENV} mode`);
 });
 
 export default app;
