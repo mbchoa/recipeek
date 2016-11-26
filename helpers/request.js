@@ -1,5 +1,4 @@
 import { identity, isError, omit } from 'lodash';
-import fetch from 'whatwg-fetch';
 
 function checkStatus(response) {
   const { status } = response;
@@ -9,7 +8,7 @@ function checkStatus(response) {
 }
 
 export function makeRequest(
-  request = fetch,
+  request,
   options = {},
   createResult = identity
 ) {
