@@ -9,9 +9,9 @@
     "coverage": "npm run clean && cross-env NODE_ENV=test nyc npm test",
     "start:dev": "export NODE_ENV=development && babel-node server.js",
     "start:express": "nodemon dist/apiServer.js",
-    "bundle": "webpack --progress -p --config config/webpack.prod.config.js",
-    "build": "gulp build && npm run start:express",
-    "start": "npm run build"
+    "build": "gulp build",
+    "postinstall": "npm run build",
+    "start": "npm run start:express"
   },
   "babel": {
     "presets": [
@@ -86,6 +86,7 @@
     "redux-thunk": "^2.1.0",
     "request": "^2.78.0",
     "tcomb": "^3.2.15",
+    "webpack": "^1.13.3",
     "whatwg-fetch": "^1.0.0",
     "worker-farm": "^1.3.1"
   },
@@ -114,7 +115,6 @@
     "react-hot-loader": "1.3.0",
     "redux-mock-store": "^1.2.1",
     "sinon": "^1.17.6",
-    "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.0",
