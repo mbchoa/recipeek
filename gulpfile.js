@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
 const path = require('path');
-const { assign } = require('lodash');
+const assign = require('lodash').assign;
 const nodeExternals = require('webpack-node-externals');
 const nodemon = require('nodemon');
 
