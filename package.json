@@ -65,6 +65,7 @@
   },
   "homepage": "https://github.com/mbchoa/recipeek#readme",
   "dependencies": {
+    "babel": "^6.5.2",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "cheerio": "^0.20.0",
@@ -94,7 +95,6 @@
   },
   "devDependencies": {
     "artillery": "^1.5.0-17",
-    "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
