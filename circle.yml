@@ -1,0 +1,15 @@
+test:
+  override:
+    - npm run coverage:
+        environment:
+          MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
+
+deployment:
+  prod:
+    branch: master
+    heroku:
+      appname: powerful-castle-60273
+  staging:
+    branch: develop
+    heroku:
+      appname: recipeek-staging

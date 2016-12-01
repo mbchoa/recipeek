@@ -7,10 +7,11 @@
     "clean": "rm -rf coverage",
     "test": "mocha './{,!(node_modules)/**/}*.spec.js'",
     "coverage": "npm run clean && cross-env NODE_ENV=test nyc npm test",
-    "start:express": "nodemon server/apiServer.js",
     "start:dev": "export NODE_ENV=development && babel-node server.js",
-    "bundle": "webpack --progress -p --config webpack.prod.config.js",
-    "build": "npm run bundle && npm run start:express && open dist/index.html"
+    "start:express": "nodemon dist/apiServer.js",
+    "bundle": "webpack --progress -p --config config/webpack.prod.config.js",
+    "build": "gulp build && npm run start:express",
+    "start": "npm run build"
   },
   "babel": {
     "presets": [
@@ -106,7 +107,9 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1",
+    "gulp": "^3.9.1",
     "mocha": "^3.1.2",
+    "mocha-junit-reporter": "^1.12.1",
     "nyc": "^8.4.0",
     "react-hot-loader": "1.3.0",
     "redux-mock-store": "^1.2.1",
@@ -114,6 +117,7 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^1.16.2",
-    "webpack-hot-middleware": "^2.13.0"
+    "webpack-hot-middleware": "^2.13.0",
+    "webpack-node-externals": "^1.5.4"
   }
 }
