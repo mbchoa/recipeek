@@ -8,7 +8,6 @@
     "test": "mocha './{,!(node_modules)/**/}*.spec.js'",
     "coverage": "npm run clean && cross-env NODE_ENV=test nyc npm test",
     "dev": "export NODE_ENV=development && babel-node server.js",
-    "build": "gulp build",
     "start": "gulp build && nodemon dist/apiServer.js"
   },
   "babel": {
