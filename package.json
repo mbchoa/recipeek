@@ -7,11 +7,8 @@
     "clean": "rm -rf coverage",
     "test": "mocha './{,!(node_modules)/**/}*.spec.js'",
     "coverage": "npm run clean && cross-env NODE_ENV=test nyc npm test",
-    "start:dev": "export NODE_ENV=development && babel-node server.js",
-    "start:express": "nodemon dist/apiServer.js",
-    "build": "gulp build",
-    "postinstall": "npm run build",
-    "start": "npm run start:express"
+    "dev": "export NODE_ENV=development && babel-node server.js",
+    "start": "gulp build && nodemon dist/apiServer.js"
   },
   "babel": {
     "presets": [
