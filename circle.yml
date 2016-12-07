@@ -8,7 +8,7 @@ deployment:
   prod:
     branch: master
     heroku:
-      appname: powerful-castle-60273
+      appname: recipeek
   staging:
     branch: develop
     heroku:
