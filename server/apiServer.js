@@ -53,8 +53,9 @@ app.get('/api/v2/search/:ingredient', (req, res) => {
       data: JSON.parse(payload),
     });
   });
-});
+})
 
+// test cicd
 app.listen(process.env.PORT || 3000, function () {
   console.log(`Express API server listening on port ${this.address().port} in ${process.env.NODE_ENV} mode`);
 });
