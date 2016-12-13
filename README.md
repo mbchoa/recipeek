@@ -1,21 +1,20 @@
 # recipeek
-Superbly simple recipe discovery app using NLP to intelligently search for just the right recipe using specific food keywords.
+Recipe discovery app using NLP to tag search recipe with specific food keywords.
 
 ##Overview
 ###Tech Stack
 - React
 - Node + Express
 - nlp_compromise
-- Cheerio
-- fetch polyfill
+- Webpack + Dev Server + HMR
 
 ###Front-end
 - built in React
 - 4 different components :
   - ``<App>`` handles event callbacks for search input and search submit, makes API request to local server and /search endpoint
-  - ``<SearchBar>`` dumb component to display input form
+  - ``<SearchBar>`` presentational component to display input form
   - ``<RecipeList>`` container component to render multiple Recipe view components
-  - ``<Recipe>`` dumb component to render single recipe thumbnail image
+  - ``<Recipe>`` presentational component to render single recipe thumbnail image
 
 ###Back-end
 - 4 controllers
@@ -27,14 +26,5 @@ Superbly simple recipe discovery app using NLP to intelligently search for just 
 ##Getting Started 
 
 1. ``npm install``
-2. ``npm run watchify`` to create ``bundle.js`` file
-2. ``npm start`` to start local server
-3. Navigate to ``http://localhost:3000``
-
-##Todo List
-- unit tests
-- user authentication
-
-##Known Issues
-- performance bottleneck when using nlp_compromise library to parse through each recipe's scraped html page
-- algorithm to find keywords on recipe pages is not reliable; need a better way to gather useful keywords specific to the recipe
+2. ``npm run start:dev`` to run local webpack dev server with HMR
+3. ``npm run build`` to build production bundle files
