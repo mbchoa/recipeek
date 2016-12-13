@@ -12,6 +12,7 @@ import request from 'request';
 
 // config
 if (process.env.NODE_ENV !== 'production') {
+  console.log('dotenv config executing');
   require('dotenv').config();
 }
 
