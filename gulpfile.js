@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const path = require('path');
 const assign = require('lodash').assign;
 const nodeExternals = require('webpack-node-externals');
-const nodemon = require('nodemon');
 
 const frontWebpackConfig = require('./config/webpack.prod.config.js');
 
@@ -70,15 +69,3 @@ gulp.task('backend-build', done => {
 });
 
 gulp.task('build', ['frontend-build', 'backend-build']);
-
-gulp.task('backend-watch', function(done) {
-  var firedDone = false;
-  webpack(backEndConfig).watch(100, function(err, stats) {
-    if(!firedDone) {
-      firedDone = true;
-      done();
-    }
-
-    nodemon.restart();
-  });
-});
