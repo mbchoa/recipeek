@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-source-map',
     entry: [
         './index.js',
     ],
@@ -22,9 +22,15 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
-            mangle: true,
-            comments: false,
+            compress: {
+                warnings: false,
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false,
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {

@@ -35,14 +35,20 @@ const backEndConfig = config({
   externals: [nodeExternals()],
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      comments: false,
+        compress: {
+            warnings: false,
+        },
+        output: {
+            comments: false
+        },
+        sourceMap: false,
     }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-      },
+        'process.env': {
+            'NODE_ENV': JSON.stringify('production'),
+        },
     }),
   ],
 });
