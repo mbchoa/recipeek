@@ -1,6 +1,6 @@
-import { noop, omit } from 'lodash';
+import { isError, noop, omit } from 'lodash';
 
-import search, { createRequestOptions } from './search';
+import search, { createRequestOptions, createResult } from './search';
 import { RequestOptions } from '../common';
 import { createMockRequest } from '../../helpers/request';
 import { recipesOk } from './fixtures';
@@ -31,6 +31,24 @@ describe('v2 Search API Tests', () => {
         requestOptions.url,
         omit(requestOptions, 'url')
       )).to.be.true;
+    });
+
+  });
+
+  describe('#createResult', () => {
+
+    it('should return new Error object if data is an error object', () => {
+      expect(isError(createResult({
+        data: new Error(),
+        status: 200,
+      }))).to.be.true;
+    });
+
+    it('should return new Error object if status code received is unhandled', () => {
+      expect(isError(createResult({
+        data: { hello: 'world' },
+        status: 500,
+      }))).to.be.true;
     });
 
   });
