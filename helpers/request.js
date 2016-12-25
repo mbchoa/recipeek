@@ -15,18 +15,21 @@ export function makeRequest(
   return new Promise((resolve, reject) => {
     request(options.url, omit(options, 'url'))
       .then(response => {
-        let result;
-        try {
-          result = createResult(response.text());
-        } catch (err) {
-          return reject(err);
-        }
+        response.json()
+          .then(payload => {
+            let result;
+            try {
+              result = createResult(payload);
+            } catch (err) {
+              return reject(err);
+            }
 
-        if (!isError(checkStatus(response))) {
-          return resolve(result);
-        }
+            if (!isError(checkStatus(response))) {
+              return resolve(result);
+            }
 
-        reject(new Error(`Unhandled status code: ${response.status} received.`));
+            reject(new Error(`Unhandled status code: ${response.status} received.`));
+          });
       });
   });
 }
@@ -58,8 +61,8 @@ export function createMockRequest() {
 
   function decorateResponse(response) {
     return {
-      text() {
-        return response;
+      json() {
+        return Promise.resolve(response);
       },
       status: response.status,
     };

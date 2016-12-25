@@ -7,8 +7,8 @@
     "clean": "rm -rf coverage",
     "test": "mocha './{,!(node_modules)/**/}*.spec.js'",
     "coverage": "npm run clean && cross-env NODE_ENV=test nyc npm test",
-    "dev": "export NODE_ENV=development && babel-node server.js",
-    "start": "gulp build && node dist/apiServer.js"
+    "dev": "export NODE_ENV=development && gulp dev",
+    "start": "gulp build && nodemon dist/apiServer.js"
   },
   "babel": {
     "presets": [
@@ -74,6 +74,7 @@
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "http-status-codes": "^1.0.6",
+    "is-buffer": "^1.1.4",
     "jquery": "^2.2.4",
     "lodash": "^4.16.4",
     "mocha": "^3.1.2",
@@ -88,6 +89,7 @@
     "request": "^2.78.0",
     "tcomb": "^3.2.15",
     "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2",
     "webpack-node-externals": "^1.5.4",
     "whatwg-fetch": "^1.0.0",
     "worker-farm": "^1.3.1"
@@ -113,7 +115,6 @@
     "redux-mock-store": "^1.2.1",
     "sinon": "^1.17.6",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.0"
   }
 }

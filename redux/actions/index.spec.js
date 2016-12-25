@@ -10,6 +10,7 @@ import { createMockRequest } from '../../helpers/request';
 import mockStore from '../../helpers/mock-store';
 import { recipesOk } from '../../api-clients/v2/fixtures';
 import Recipes from '../../api-clients/v2/models/Recipes';
+import { createResult } from '../../api-clients/v2/search';
 
 describe('Recipeek Actions Tests', () => {
   describe('#actions', () => {
@@ -36,7 +37,7 @@ describe('Recipeek Actions Tests', () => {
     beforeEach(() => {
       const options = createMockRequest();
       respond = options.resolveResponse;
-      store = mockStore({}, options);
+      store = mockStore({}, options.request);
     });
 
     it('should dispatch SET_IS_LOADING_RECIPES action upon initiating request', done => {
@@ -64,8 +65,8 @@ describe('Recipeek Actions Tests', () => {
     it('should dispatch SET_RECIPES action with Recipes model payload to update state', done => {
       store.dispatch(getRecipes('chicken'))
         .then(() => {
-          expect(Recipes.is(store.getActions()[1].recipes))
-            .to.be.true;
+          expect(store.getActions()[1].recipes)
+            .to.deep.equal(createResult(recipesOk).recipeList);
           done();
         }, done.fail);
 

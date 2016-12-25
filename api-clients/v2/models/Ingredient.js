@@ -1,10 +1,8 @@
 import t from 'tcomb';
 
 const Ingredient = t.struct({
-  food: t.String,
-  measure: t.String,
-  quantity: t.Number,
   text: t.String,
+  weight: t.Number,
 });
 
 export default Ingredient;

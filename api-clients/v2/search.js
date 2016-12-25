@@ -14,20 +14,20 @@ export const createRequestOptions = t.func(
   url: `/api/v2/search/${ingredient}`,
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
+    'Accept-Encoding': 'gzip'
   },
 }));
 
-export const createResult = ({ status, data }) => {
-  const payload = attempt(JSON.parse, data);
+export const createResult = ({ data, status }) => {
   switch (status) {
     case OK:
     case NOT_FOUND:
-      if (!isError(payload)) {
-        return Recipes.of(payload);
-      }
-      
+      return !isError(data)
+        ? Recipes.of(data)
+        : new Error('Error invalid data response received');
+
     default:
-      return new Error(status);
+      return new Error(`Unhandled status code: ${status} received`);
   }
 };
 
