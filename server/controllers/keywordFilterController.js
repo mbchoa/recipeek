@@ -13,7 +13,7 @@ const top3CommonKeyWords = keywordsArr => {
   });
 };
 
-module.exports = (req, res, next) => {
+export default function keywordFilterController(req, res, next) {
   console.log('-> key word filter controller entry point');
   const startTime = Date.now();
   req.parsedData.forEach(recipeData => {
