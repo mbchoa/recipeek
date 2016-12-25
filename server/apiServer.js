@@ -17,15 +17,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app = express();
-
 app.use(cors());
 app.use(compression());
-app.use(express.static(path.join(
-  __dirname,
-  process.env.NODE_ENV === 'development'
-    ? '/..'
-    : ''
-)));
+app.use(express.static(__dirname));
 
 app.get('/api/search/:ingredient',
   searchController,
@@ -49,6 +43,10 @@ app.get('/api/v2/search/:ingredient', (req, res) => {
     if (err) {
       return console.log(err);
     }
+    res.set({
+      'Cache-Control': 'public, max-age=86400',
+      'Content-Type': 'application/json',
+    });
     res.send({
       status: 200,
       data: JSON.parse(payload),
@@ -56,8 +54,7 @@ app.get('/api/v2/search/:ingredient', (req, res) => {
   });
 })
 
-// test cicd
-app.listen(process.env.PORT || 3000, function () {
+app.listen(process.env.PORT || 4000, function () {
   console.log(`Express API server listening on port ${this.address().port} in ${process.env.NODE_ENV} mode`);
 });
 

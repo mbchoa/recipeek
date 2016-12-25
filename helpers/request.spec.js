@@ -46,4 +46,27 @@ describe('Request Helper Tests', () => {
 
     rejectResponse('bar');
   });
+
+  it('should reject on unhandled status code response', done => {
+    const { request, resolveResponse } = createMockRequest();
+    const ajaxOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Accept-Encoding': 'gzip'
+      }
+    };
+
+    makeRequest(request, ajaxOptions)
+      .then(done.fail, err => {
+        expect(isError(err)).to.be.true;
+        done();
+      });
+
+    resolveResponse({
+      data: 'recipe data',
+      status: 404,
+    });
+  });
+
 });
