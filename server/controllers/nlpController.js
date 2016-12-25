@@ -1,5 +1,7 @@
-const workerFarm = require('worker-farm')
-const nlpWorkers = workerFarm(require.resolve('./nlpWorker'));
+const workerFarm = require('worker-farm');
+const path = require('path');
+
+const nlpWorkers = workerFarm(path.resolve('./server/controllers/nlpWorker.js'));
 let ret = 0;
 
 export default function nlpController(req, res, next) {
