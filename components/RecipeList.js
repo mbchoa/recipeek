@@ -8,13 +8,13 @@ const style = {
 };
 
 const RecipeList = ({
-  recipesData,
+  recipes,
 }) =>
   <div>
     <hr />
     <div style={style}>
       {
-        map(recipesData, (recipeData, key) =>
+        map(recipes, (recipeData, key) =>
           <Recipe
             {...{
               key,

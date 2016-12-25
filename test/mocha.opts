@@ -1,0 +1,6 @@
+--require babel-register
+--require test/setup.js
+--reporter mocha-junit-reporter
+--ui bdd
+--colors
+--timeout 10000

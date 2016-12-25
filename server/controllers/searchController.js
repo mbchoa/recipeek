@@ -1,7 +1,7 @@
 const request = require('request');
 const MAX_NUM_RESULTS = 10;
 
-module.exports = (req, res, next) => {
+export default function searchController(req, res, next) {
   // console.log('-> search controller entry point');
   // console.log(`* request search for ingredient: ${req.params.ingredient}`);
   // const startTime = Date.now();
@@ -17,4 +17,4 @@ module.exports = (req, res, next) => {
       .slice(0, MAX_NUM_RESULTS);
     next();
   });
-};
+}
