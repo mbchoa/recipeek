@@ -33,10 +33,10 @@ export function getRecipes(ingredient) {
   return (dispatch, getState, fetch) => {
     dispatch(setIsLoadingRecipes());
 
-    const { search } = createApiClient(fetch);
+    const { search } = createApiClient({ fetch });
     return search(ingredient).then(
-      response => {
-        dispatch(setRecipes(response));
+      ({ recipeList }) => {
+        dispatch(setRecipes(recipeList));
         dispatch(getRecipesCompleted());
       },
       error => {

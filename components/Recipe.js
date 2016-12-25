@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { map } from 'lodash';
+
 import { titleCase } from '../helpers/string';
 
 const recipeImgStyle = {
@@ -11,42 +12,33 @@ const keywordStyle = {
 };
 
 const Recipe = ({
-  image_url,
-  keywords,
-  publisher,
-  publisher_url,
-  source_url,
-  title,
+  healthLabels,
+  imageUrl,
+  name,
+  source,
+  sourceUrl,
 }) =>
   <div className="thumbnail">
-    <a href={source_url}>
-      <img style={recipeImgStyle} src={image_url} alt={title} />
+    <a href={ sourceUrl }>
+      <img style={ recipeImgStyle } src={ imageUrl } alt={ name } />
     </a>
     <div className="caption">
-      <h5>{titleCase(title)}</h5>
-      <h6>by <a href={publisher_url}>{publisher}</a></h6>
+      <h5>{ titleCase(name) }</h5>
+      <h6>by { source }</h6>
       <div className="keywords">
         {
-          map(keywords, (word, key) =>
+          map(healthLabels, (label, key) =>
             <span {...{
               key,
               style: keywordStyle,
               className: 'label label-pill label-info',
             }} >
-                {word}
+                { label }
             </span>
           )
         }
       </div>
     </div>
   </div>;
-
-Recipe.propTypes = {
-  image_url: PropTypes.string,
-  keywords: PropTypes.array,
-  publisher: PropTypes.string,
-  source_url: PropTypes.string,
-  title: PropTypes.string,
-};
 
 export default Recipe;

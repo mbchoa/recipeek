@@ -1,15 +1,15 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
-var config = {
-    devtool: 'cheap-module-eval-source-map',
+module.exports = {
+    devtool: 'source-map',
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
         './index.js',
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '..', 'dist'),
         filename: 'bundle.js',
         publicPath: '/dist/',
     },
@@ -28,5 +28,3 @@ var config = {
         new webpack.NoErrorsPlugin(),
     ],
 };
-
-module.exports = config;
