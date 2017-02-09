@@ -1151,7 +1151,7 @@ charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
-cheerio@0.20.0, cheerio@^0.20.0:
+cheerio@0.20.0:
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-0.20.0.tgz#5c710f2bab95653272842ba01c6ea61b3545ec35"
   dependencies:
@@ -1719,7 +1719,7 @@ entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
-"errno@>=0.1.1 <0.2.0-0", errno@^0.1.3:
+errno@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.4.tgz#b896e23a9e5e8ba33871fc996abd3635fc9a1c7d"
   dependencies:
@@ -3076,10 +3076,6 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery@^2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
-
 js-tokens@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-2.0.0.tgz#79903f5563ee778cc1162e6dcf1a0027c97f9cb5"
@@ -3680,10 +3676,6 @@ nested-error-stacks@^1.0.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"
   dependencies:
     inherits "~2.0.1"
-
-nlp_compromise@^5.1.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/nlp_compromise/-/nlp_compromise-5.2.0.tgz#613f4058749112f59a9138226111a3890adbcdcd"
 
 node-fetch@^1.0.1:
   version "1.6.3"
@@ -5486,13 +5478,6 @@ wordwrap@~0.0.2:
 wordwrap@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
-
-worker-farm@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.3.1.tgz#4333112bb49b17aa050b87895ca6b2cacf40e5ff"
-  dependencies:
-    errno ">=0.1.1 <0.2.0-0"
-    xtend ">=4.0.0 <4.1.0-0"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

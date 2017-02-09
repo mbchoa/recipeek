@@ -5,7 +5,7 @@ export default function startAppServer(port) {
   const app = express();
   app.use(express.static(__dirname));
   app.use('/api/*', (req, res) => {
-    const proxyPath = `http://localhost:${port-1}${req.originalUrl}`;
+    const proxyPath = `${process.env.API_BASE_URL}:${port-1}${req.originalUrl}`;
     request(proxyPath).pipe(res);
   });
 

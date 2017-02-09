@@ -1,0 +1,18 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    depends_on:
+      - api
+    ports:
+      - 4000:4000
+    environment:
+      API_BASE_URL: 'http://api'
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile-api
+    ports:
+      - 3999:3999

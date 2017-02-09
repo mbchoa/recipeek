@@ -1,0 +1,15 @@
+FROM node:slim
+
+# Create app directory
+RUN mkdir -p /usr/src/api
+WORKDIR /usr/src/api
+
+# Install app dependencies
+ADD package.json .
+RUN npm install
+
+# Bundle app source
+ADD . /usr/src/api
+
+EXPOSE 3999
+CMD [ "npm", "run", "docker:api" ]
