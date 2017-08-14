@@ -16,17 +16,17 @@ describe('Recipeek Actions Tests', () => {
   describe('#actions', () => {
     it('should return action object with type "GET_RECIPES_COMPLETED"', () => {
       expect(getRecipesCompleted())
-        .to.have.property('type', RecipeekActions('GET_RECIPES_COMPLETED'));
+        .toHaveProperty('type', RecipeekActions('GET_RECIPES_COMPLETED'));
     });
 
     it('should return action object with type "SET_IS_LOADING_RECIPES"', () => {
       expect(setIsLoadingRecipes())
-        .to.have.property('type', RecipeekActions('SET_IS_LOADING_RECIPES'));
+        .toHaveProperty('type', RecipeekActions('SET_IS_LOADING_RECIPES'));
     });
 
     it('should return action object with type "SET_RECIPES"', () => {
       expect(setRecipes())
-        .to.have.property('type', RecipeekActions('SET_RECIPES'));
+        .toHaveProperty('type', RecipeekActions('SET_RECIPES'));
     });
   });
 
@@ -44,7 +44,7 @@ describe('Recipeek Actions Tests', () => {
       store.dispatch(getRecipes('chicken'))
         .then(() => {
           expect(store.getActions()[0].type)
-            .to.equal(RecipeekActions('SET_IS_LOADING_RECIPES'));
+            .toEqual(RecipeekActions('SET_IS_LOADING_RECIPES'));
           done();
         }, done.fail);
 
@@ -55,7 +55,7 @@ describe('Recipeek Actions Tests', () => {
       store.dispatch(getRecipes('chicken'))
         .then(() => {
           expect(store.getActions()[1].type)
-            .to.equal(RecipeekActions('SET_RECIPES'));
+            .toEqual(RecipeekActions('SET_RECIPES'));
           done();
         }, done.fail);
 
@@ -66,7 +66,7 @@ describe('Recipeek Actions Tests', () => {
       store.dispatch(getRecipes('chicken'))
         .then(() => {
           expect(store.getActions()[1].recipes)
-            .to.deep.equal(createResult(recipesOk).recipeList);
+            .toEqual(createResult(recipesOk).recipeList);
           done();
         }, done.fail);
 
@@ -77,7 +77,7 @@ describe('Recipeek Actions Tests', () => {
       store.dispatch(getRecipes('chicken'))
         .then(() => {
           expect(store.getActions()[2].type)
-            .to.equal(RecipeekActions('GET_RECIPES_COMPLETED'));
+            .toEqual(RecipeekActions('GET_RECIPES_COMPLETED'));
           done();
         }, done.fail);
 
@@ -88,7 +88,7 @@ describe('Recipeek Actions Tests', () => {
       store.dispatch(getRecipes('chicken'))
         .then(done.fail,
           () => {
-            expect(isError(store.getActions()[1].error));
+            expect(isError(store.getActions()[1].error)).toBeTruthy();
             done();
           }
         );
