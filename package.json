@@ -39,6 +39,10 @@
   },
   "homepage": "https://github.com/mbchoa/recipeek#readme",
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-env": "^7.0.0-beta.36",
+    "@babel/preset-react": "^7.0.0-beta.36",
+    "@babel/preset-stage-2": "^7.0.0-beta.36",
     "compression": "^1.6.2",
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",
@@ -62,10 +66,6 @@
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.36",
-    "@babel/preset-env": "^7.0.0-beta.36",
-    "@babel/preset-react": "^7.0.0-beta.36",
-    "@babel/preset-stage-2": "^7.0.0-beta.36",
     "babel-cli": "^6.18.0",
     "babel-jest": "^22.0.4",
     "babel-register": "^6.18.0",
