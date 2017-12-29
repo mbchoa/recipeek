@@ -92,7 +92,7 @@ gulp.task('frontend-dev', ['frontend-dev-assets', 'backend-build'], done => {
       console.log('WDS listening on http://localhost:8080');
 
       // start express api + app servers
-      const { 
+      const {
         createApiServer,
         createAppServer,
       } = require('./dist/server.bundle.js');

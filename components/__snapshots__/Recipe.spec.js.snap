@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe should render Recipe component 1`] = `
+<div
+  className="thumbnail"
+>
+  <a
+    href="www.strinkyfruit.com/source"
+  >
+    <img
+      alt="stinky fruit"
+      src="www.stinkyfruit.com"
+      style={
+        Object {
+          "height": 300,
+        }
+      }
+    />
+  </a>
+  <div
+    className="caption"
+  >
+    <h5>
+      Stinky Fruit
+    </h5>
+    <h6>
+      by 
+      Stinky Fruit Blog
+    </h6>
+    <div
+      className="keywords"
+    >
+      <span
+        className="label label-pill label-info"
+        style={
+          Object {
+            "fontSize": 14,
+          }
+        }
+      >
+        stinky
+      </span>
+      <span
+        className="label label-pill label-info"
+        style={
+          Object {
+            "fontSize": 14,
+          }
+        }
+      >
+        sour
+      </span>
+    </div>
+  </div>
+</div>
+`;
