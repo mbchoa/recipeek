@@ -12,10 +12,10 @@ module.exports = {
         publicPath: '/dist/',
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loaders: ['babel'],
+                loaders: ['babel-loader'],
                 exclude: /node_modules/,
             }
         ]
@@ -30,8 +30,6 @@ module.exports = {
             },
             sourceMap: false,
         }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production'),

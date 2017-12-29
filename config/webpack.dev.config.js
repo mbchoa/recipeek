@@ -6,6 +6,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
+        'react-hot-loader/patch',
         './index.js',
     ],
     output: {
@@ -14,17 +15,15 @@ module.exports = {
         publicPath: '/dist/',
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loaders: ['react-hot', 'babel'],
+                loaders: ['babel-loader'],
                 exclude: /node_modules/,
             }
         ]
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
 };
