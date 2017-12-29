@@ -13,11 +13,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 const baseConfig = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
       },
     ],
   },
@@ -50,9 +50,7 @@ const backendConfig = config({
             comments: false
         },
         sourceMap: false,
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.NoErrorsPlugin()
+    })
   ],
 });
 
