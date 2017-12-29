@@ -66,7 +66,10 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "homepage": "https://github.com/mbchoa/recipeek#readme",
   "dependencies": {
@@ -102,6 +105,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-jest": "^22.0.4",
     "babel-plugin-istanbul": "^2.0.3",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-register": "^6.18.0",
