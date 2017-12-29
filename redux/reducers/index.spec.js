@@ -28,7 +28,7 @@ describe('Recipeek Reducers Tests', () => {
     ];
 
     expect(rootReducer({},
-      { 
+      {
         type: RecipeekActions('SET_RECIPES'),
         recipes: fakeRecipes,
       }

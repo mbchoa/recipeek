@@ -1,8 +1,8 @@
-test:
-  override:
-    - npm run coverage:
-        environment:
-          MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
+machine:
+  node:
+    version: 6.12.2
+  npm:
+    version: 3.10.10
 
 deployment:
   prod:

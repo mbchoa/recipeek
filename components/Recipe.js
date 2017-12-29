@@ -11,7 +11,7 @@ const keywordStyle = {
   fontSize: 14,
 };
 
-export const Recipe = ({
+const Recipe = ({
   healthLabels,
   imageUrl,
   name,
