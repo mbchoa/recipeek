@@ -2,8 +2,12 @@ import express from 'express';
 import compression from 'compression';
 import request from 'request';
 
+import graphqlRouter from './graphql/router';
+
 const app = express();
 app.use(compression());
+
+graphqlRouter(app);
 
 app.get('/api/v2/search/:ingredient', (req, res) => {
   request(`https://api.edamam.com/search?q=${req.params.ingredient}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`, (err, resp, payload) => {
