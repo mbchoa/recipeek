@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getRecipes } from '../redux/actions';
+import { setSearchIngredient } from '../redux/actions';
 
 const searchBarStyle = {
   textAlign: 'center',
@@ -10,7 +10,7 @@ const searchBarStyle = {
 
 class SearchBar extends Component {
   static propTypes = {
-    getRecipes: PropTypes.func
+    setSearchIngredient: PropTypes.func
   };
 
   state = {
@@ -23,7 +23,7 @@ class SearchBar extends Component {
 
   handleSubmitSearch = (e) => {
     e.preventDefault();
-    this.props.getRecipes(this.state.searchInput);
+    this.props.setSearchIngredient(this.state.searchInput);
     this.setState({ searchInput: '' });
   }
 
@@ -35,10 +35,11 @@ class SearchBar extends Component {
           className="form-control"
           type="text"
           placeholder="Search for a recipe"
-          onChange={ this.handleSearchTextChange } />
+          onChange={ this.handleSearchTextChange }
+          value={ this.state.searchInput } />
       </form>
     );
   }
 }
 
-export default connect(null, { getRecipes })(SearchBar);
+export default connect(null, { setSearchIngredient })(SearchBar);

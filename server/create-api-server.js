@@ -1,11 +1,13 @@
 import express from 'express';
 import compression from 'compression';
 import request from 'request';
+import cors from 'cors';
 
 import graphqlRouter from './graphql/router';
 
 const app = express();
 app.use(compression());
+app.use('*', cors({ origin: 'http://localhost:4000' }));
 
 graphqlRouter(app);
 

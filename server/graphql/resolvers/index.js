@@ -4,7 +4,7 @@ import edamamApiClient from '../../../api-clients/edamamApi';
 
 export default {
   Query: {
-    fetchRecipes: (root, { ingredient }) =>
+    recipes: (root, { ingredient }) =>
       edamamApiClient.get(`/search?${qs.stringify({
         q: ingredient,
         app_id: process.env.APP_ID,

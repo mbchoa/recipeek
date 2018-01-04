@@ -6,7 +6,6 @@ export default `
     image: String,
     ingredients: [Ingredient],
     label: String,
-    name: String,
     source: String,
     totalDaily: [Nutrient],
     totalNutrients: [Nutrient],

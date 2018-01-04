@@ -1,5 +1,5 @@
 module.exports = `
   type Query {
-    fetchRecipes(ingredient: String!): Hits
+    recipes(ingredient: String!): Hits
   }
 `;
