@@ -13,10 +13,10 @@ describe('Recipe', () => {
     it('should render Recipe component', () => {
         expect(renderComponent({
             healthLabels: [ 'stinky', 'sour' ],
-            imageUrl: 'www.stinkyfruit.com',
-            name: 'stinky fruit',
+            image: 'www.stinkyfruit.com',
+            label: 'stinky fruit',
             source: 'Stinky Fruit Blog',
-            sourceUrl: 'www.strinkyfruit.com/source'
+            url: 'www.strinkyfruit.com/source'
         })).toMatchSnapshot();
     });
 });

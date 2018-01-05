@@ -20,10 +20,10 @@ const Recipe = ({
 }) =>
   <div className="thumbnail">
     <a href={ url }>
-      <img style={ recipeImgStyle } src={ image } alt={ name } />
+      <img style={ recipeImgStyle } src={ image } alt={ label } />
     </a>
     <div className="caption">
-      <h5>{ titleCase(name) }</h5>
+      <h5>{ titleCase(label) }</h5>
       <h6>by { source }</h6>
       <div className="keywords">
         {
