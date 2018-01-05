@@ -7,9 +7,9 @@ import {
 export default function rootReducer(state, action) {
   switch (action.type) {
     case RecipeekActions('SET_IS_LOADING_RECIPES'):
-      return { 
+      return {
         ...state,
-        isLoadingRecipes: true 
+        isLoadingRecipes: true
       };
     case RecipeekActions('SET_RECIPES'):
       return assign(
@@ -21,6 +21,11 @@ export default function rootReducer(state, action) {
       return {
         ...state,
         isLoadingRecipes: false
+      };
+    case 'SET_SEARCH_INGREDIENT':
+      return {
+        ...state,
+        searchIngredient: action.data
       };
     default:
       return state;

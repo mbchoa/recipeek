@@ -4,7 +4,7 @@ const path = require('path');
 const assign = require('lodash').assign;
 const nodeExternals = require('webpack-node-externals');
 const WebpackDevServer = require('webpack-dev-server');
-const frontWebpackConfig = require('./config/webpack.prod.config.js');
+const frontWebpackConfig = require('./config/webpack.prod.config.js')
 
 // load dev environment variables
 if (process.env.NODE_ENV !== 'production') {
@@ -25,7 +25,7 @@ const baseConfig = {
 
 const config = (overrides) => assign({}, baseConfig, overrides || {});
 
-const frontEndConfig = config(frontWebpackConfig);
+const frontEndConfig = config(frontWebpackConfig(process.env.PORT));
 const backendConfig = config({
   entry: './server/index.js',
   output: {
@@ -75,7 +75,7 @@ gulp.task('build', ['backend-build', 'frontend-build'], done => {
 });
 
 // development gulp tasks
-const frontEndDevConfig = require('./config/webpack.dev.config.js');
+const frontEndDevConfig = require('./config/webpack.dev.config.js')(process.env.PORT);
 
 gulp.task('frontend-dev-assets', done => {
   webpack(frontEndDevConfig).run(onBuildComplete(done));
