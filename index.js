@@ -15,9 +15,7 @@ import initialState from './redux/store/initialState';
 const store = configureStore(initialState);
 
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: `http://localhost:${process.env.PORT-1}/graphql`
-  }),
+  link: new HttpLink(),
   cache: new InMemoryCache()
 });
 
