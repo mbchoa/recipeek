@@ -28,9 +28,9 @@ module.exports = ({ port, apiProtocol, apiDomain }) => ({
         new webpack.DefinePlugin({
           'process.env': {
               'NODE_ENV': JSON.stringify('production'),
-              'PORT': port,
-              'API_PROTOCOL': apiProtocol,
-              'API_DOMAIN': apiDomain
+              'PORT': JSON.stringify(port),
+              'API_PROTOCOL': JSON.stringify(apiProtocol),
+              'API_DOMAIN': JSON.stringify(apiDomain)
           }
         })
     ],

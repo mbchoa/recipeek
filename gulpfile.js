@@ -25,7 +25,11 @@ const baseConfig = {
 
 const config = (overrides) => assign({}, baseConfig, overrides || {});
 
-const frontEndConfig = config(frontWebpackConfig(process.env.PORT));
+const frontEndConfig = config(frontWebpackConfig({
+  apiProtocol: process.env.API_PROTOCOL,
+  apiDomain: process.env.API_DOMAIN,
+  port: process.env.PORT,
+}));
 const backendConfig = config({
   entry: './server/index.js',
   output: {
@@ -75,7 +79,11 @@ gulp.task('build', ['backend-build', 'frontend-build'], done => {
 });
 
 // development gulp tasks
-const frontEndDevConfig = require('./config/webpack.dev.config.js')(process.env.PORT);
+const frontEndDevConfig = require('./config/webpack.dev.config.js')({
+  apiProtocol: process.env.API_PROTOCOL,
+  apiDomain: process.env.API_DOMAIN,
+  port: process.env.PORT
+});
 
 gulp.task('frontend-dev-assets', done => {
   webpack(frontEndDevConfig).run(onBuildComplete(done));
