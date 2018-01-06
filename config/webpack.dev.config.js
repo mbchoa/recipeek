@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = (port) => ({
+module.exports = ({ port, apiProtocol, apiDomain }) => ({
     devtool: 'source-map',
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
@@ -27,7 +27,10 @@ module.exports = (port) => ({
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
           'process.env': {
-            'PORT': port
+              'NODE_ENV': JSON.stringify('production'),
+              'PORT': JSON.stringify(port),
+              'API_PROTOCOL': JSON.stringify(apiProtocol),
+              'API_DOMAIN': JSON.stringify(apiDomain)
           }
         })
     ],
