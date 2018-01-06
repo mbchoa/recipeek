@@ -16,7 +16,7 @@ const store = configureStore(initialState);
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: `${process.env.API_PROTOCOL}://${process.env.API_DOMAIN}:${process.env.PORT-1}/graphql`
+    uri: `http://localhost:${process.env.PORT-1}/graphql`
   }),
   cache: new InMemoryCache()
 });

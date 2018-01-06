@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = ({ port, apiProtocol, apiDomain }) => ({
+module.exports = ({ port }) => ({
     devtool: 'cheap-module-source-map',
     entry: [
         './index.js',
@@ -33,9 +33,7 @@ module.exports = ({ port, apiProtocol, apiDomain }) => ({
         new webpack.DefinePlugin({
           'process.env': {
               'NODE_ENV': JSON.stringify('production'),
-              'PORT': JSON.stringify(port),
-              'API_PROTOCOL': JSON.stringify(apiProtocol),
-              'API_DOMAIN': JSON.stringify(apiDomain)
+              'PORT': JSON.stringify(port)
           }
         }),
     ],
