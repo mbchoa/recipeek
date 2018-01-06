@@ -31,10 +31,12 @@ module.exports = (port) => ({
             sourceMap: false,
         }),
         new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production'),
-                'PORT': port
-            },
+          'process.env': {
+              'NODE_ENV': JSON.stringify('production'),
+              'PORT': port,
+              'API_PROTOCOL': apiProtocol,
+              'API_DOMAIN': apiDomain
+          }
         }),
     ],
 });

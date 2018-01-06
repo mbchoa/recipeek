@@ -13,8 +13,13 @@ import configureStore from './redux/store/configureStore';
 import initialState from './redux/store/initialState';
 
 const store = configureStore(initialState);
+
 const client = new ApolloClient({
-  link: new HttpLink({ uri: `http://localhost:${process.env.PORT-1}/graphql` }),
+  link: new HttpLink({
+    uri: process.env.NODE_ENV === 'development'
+      ? `http://localhost:${process.env.PORT-1}`
+      : `${process.env.API_PROTOCOL}://${process.env.API_DOMAIN}:${process.env.PORT-1}/graphql`
+  }),
   cache: new InMemoryCache()
 });
 
