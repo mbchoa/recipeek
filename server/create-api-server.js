@@ -7,7 +7,7 @@ import graphqlRouter from './graphql/router';
 
 export default function startApiServer(apiPort) {
   const app = express();
-  app.use('*', cors({ origin: `${process.env.API_PROTOCOL}://${process.env.API_DOMAIN}:${process.env.PORT}` }));
+  app.use('*', cors({ origin: `http://localhost:${process.env.PORT}` }));
   app.use(compression());
 
   graphqlRouter(app);
