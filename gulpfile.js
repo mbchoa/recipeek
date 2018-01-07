@@ -4,7 +4,7 @@ const path = require('path');
 const assign = require('lodash').assign;
 const nodeExternals = require('webpack-node-externals');
 const WebpackDevServer = require('webpack-dev-server');
-const frontWebpackConfig = require('./config/webpack.prod.config.js');
+const frontWebpackConfig = require('./config/webpack.prod.config.js')
 
 // load dev environment variables
 if (process.env.NODE_ENV !== 'production') {
@@ -25,7 +25,9 @@ const baseConfig = {
 
 const config = (overrides) => assign({}, baseConfig, overrides || {});
 
-const frontEndConfig = config(frontWebpackConfig);
+const frontEndConfig = config(frontWebpackConfig({
+  port: process.env.PORT,
+}));
 const backendConfig = config({
   entry: './server/index.js',
   output: {
@@ -65,17 +67,15 @@ gulp.task('backend-build', done => {
 
 gulp.task('build', ['backend-build', 'frontend-build'], done => {
   // launch app and api servers
-  const {
-    createApiServer,
-    createAppServer,
-  } = require('./dist/server.bundle.js');
+  const { createAppServer } = require('./dist/server.bundle.js');
 
-  createApiServer(process.env.PORT-1);
   createAppServer(process.env.PORT);
 });
 
 // development gulp tasks
-const frontEndDevConfig = require('./config/webpack.dev.config.js');
+const frontEndDevConfig = require('./config/webpack.dev.config.js')({
+  port: process.env.PORT
+});
 
 gulp.task('frontend-dev-assets', done => {
   webpack(frontEndDevConfig).run(onBuildComplete(done));
@@ -92,12 +92,8 @@ gulp.task('frontend-dev', ['frontend-dev-assets', 'backend-build'], done => {
       console.log('WDS listening on http://localhost:8080');
 
       // start express api + app servers
-      const {
-        createApiServer,
-        createAppServer,
-      } = require('./dist/server.bundle.js');
+      const { createAppServer } = require('./dist/server.bundle.js');
 
-      createApiServer(process.env.PORT-1);
       createAppServer(process.env.PORT);
   });
 });

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { map } from 'lodash';
 
 import { titleCase } from '../helpers/string';
@@ -13,27 +13,27 @@ const keywordStyle = {
 
 const Recipe = ({
   healthLabels,
-  imageUrl,
-  name,
+  image,
+  label,
   source,
-  sourceUrl,
+  url,
 }) =>
   <div className="thumbnail">
-    <a href={ sourceUrl }>
-      <img style={ recipeImgStyle } src={ imageUrl } alt={ name } />
+    <a href={ url }>
+      <img style={ recipeImgStyle } src={ image } alt={ label } />
     </a>
     <div className="caption">
-      <h5>{ titleCase(name) }</h5>
+      <h5>{ titleCase(label) }</h5>
       <h6>by { source }</h6>
       <div className="keywords">
         {
-          map(healthLabels, (label, key) =>
+          map(healthLabels, (healthLabel, key) =>
             <span {...{
               key,
               style: keywordStyle,
               className: 'label label-pill label-info',
             }} >
-                { label }
+                { healthLabel }
             </span>
           )
         }

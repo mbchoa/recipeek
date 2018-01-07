@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { setSearchIngredient } from '../redux/actions';
 
 const searchBarStyle = {
   textAlign: 'center',
 };
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    setSearchIngredient: PropTypes.func
+  };
 
-    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
-    this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
+  state = {
+    searchInput: ''
+  };
+
+  handleSearchTextChange = (e) => {
+    this.setState({ searchInput: e.target.value });
   }
 
-  handleSearchTextChange(e) {
-      this.setState({ searchInput: e.target.value });
-    }
-
-  handleSubmitSearch(e) {
+  handleSubmitSearch = (e) => {
     e.preventDefault();
-
-    const { getRecipes } = this.props;
-    getRecipes(this.state.searchInput);
+    this.props.setSearchIngredient(this.state.searchInput);
+    this.setState({ searchInput: '' });
   }
 
   render() {
-    const { getRecipes } = this.props;
     return (
       <form onSubmit={ this.handleSubmitSearch }>
         <input
@@ -32,10 +35,11 @@ class SearchBar extends Component {
           className="form-control"
           type="text"
           placeholder="Search for a recipe"
-          onChange={ this.handleSearchTextChange } />
+          onChange={ this.handleSearchTextChange }
+          value={ this.state.searchInput } />
       </form>
     );
   }
 }
 
-export default SearchBar;
+export default connect(null, { setSearchIngredient })(SearchBar);
