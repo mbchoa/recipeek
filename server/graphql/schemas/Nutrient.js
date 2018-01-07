@@ -1,8 +1,10 @@
 export default `
   type Nutrient {
-    uri: String,
     label: String,
-    quantity: Float,
-    unit: String
+    tag: String,
+    total: Float,
+    daily: Float,
+    unit: String,
+    sub: [Nutrient]
   }
 `;

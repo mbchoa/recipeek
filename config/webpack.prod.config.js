@@ -14,9 +14,13 @@ module.exports = ({ port }) => ({
     module: {
         rules: [
             {
-                test: /\.js$/,
-                loaders: ['babel-loader'],
-                exclude: /node_modules/,
+              test: /\.js$/,
+              loaders: ['babel-loader'],
+              exclude: /node_modules/,
+            },
+            {
+              test: /\.css$/,
+              use: [ 'style-loader', 'css-loader' ]
             }
         ]
     },

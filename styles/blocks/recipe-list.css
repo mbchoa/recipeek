@@ -1,0 +1,20 @@
+/** @define recipe-list */
+.recipe-list {
+
+}
+
+.recipe-list__loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.recipe-list__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe-list__item {
+  width: 300px;
+}

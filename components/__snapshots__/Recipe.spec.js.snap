@@ -2,10 +2,12 @@
 
 exports[`Recipe should render Recipe component 1`] = `
 <div
-  className="thumbnail"
+  className="recipe thumbnail"
 >
   <a
     href="www.strinkyfruit.com/source"
+    rel="noopener noreferer"
+    target="_blank"
   >
     <img
       alt="stinky fruit"
@@ -20,36 +22,48 @@ exports[`Recipe should render Recipe component 1`] = `
   <div
     className="caption"
   >
-    <h5>
+    <h5
+      className="recipe__name"
+    >
       Stinky Fruit
     </h5>
-    <h6>
+    <h6
+      className="recipe__source"
+    >
       by 
       Stinky Fruit Blog
     </h6>
     <div
-      className="keywords"
+      className="recipe__keywords"
     >
-      <span
-        className="label label-pill label-info"
-        style={
-          Object {
-            "fontSize": 14,
-          }
-        }
+      <div
+        className="recipe__pill"
       >
-        stinky
-      </span>
-      <span
-        className="label label-pill label-info"
-        style={
-          Object {
-            "fontSize": 14,
+        <span
+          className="label label-pill label-info"
+          style={
+            Object {
+              "fontSize": 14,
+            }
           }
-        }
+        >
+          stinky
+        </span>
+      </div>
+      <div
+        className="recipe__pill"
       >
-        sour
-      </span>
+        <span
+          className="label label-pill label-info"
+          style={
+            Object {
+              "fontSize": 14,
+            }
+          }
+        >
+          sour
+        </span>
+      </div>
     </div>
   </div>
 </div>
