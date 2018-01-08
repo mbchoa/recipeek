@@ -12,6 +12,8 @@ import App from './components/App';
 import configureStore from './redux/store/configureStore';
 import initialState from './redux/store/initialState';
 
+import './styles/sheets/index.css';
+
 const store = configureStore(initialState);
 
 const client = new ApolloClient({

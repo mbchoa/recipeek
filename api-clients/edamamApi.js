@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const edamamApiClient = axios.create({
-  baseURL: 'https://api.edamam.com',
-  timeout: 10000
+  baseURL: 'https://api.edamam.com'
 });
 
 export default edamamApiClient;

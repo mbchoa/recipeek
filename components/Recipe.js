@@ -18,23 +18,24 @@ const Recipe = ({
   source,
   url,
 }) =>
-  <div className="thumbnail">
-    <a href={ url }>
+  <div className="recipe thumbnail">
+    <a target="_blank" rel="noopener noreferer" href={ url }>
       <img style={ recipeImgStyle } src={ image } alt={ label } />
     </a>
     <div className="caption">
-      <h5>{ titleCase(label) }</h5>
-      <h6>by { source }</h6>
-      <div className="keywords">
+      <h5 className="recipe__name">{ titleCase(label) }</h5>
+      <h6 className="recipe__source">by { source }</h6>
+      <div className="recipe__keywords">
         {
           map(healthLabels, (healthLabel, key) =>
-            <span {...{
-              key,
-              style: keywordStyle,
-              className: 'label label-pill label-info',
-            }} >
-                { healthLabel }
-            </span>
+            <div className="recipe__pill" key={key}>
+              <span {...{
+                style: keywordStyle,
+                className: 'label label-pill label-info',
+              }} >
+                  { healthLabel.split('-').join(' ') }
+              </span>
+            </div>
           )
         }
       </div>
