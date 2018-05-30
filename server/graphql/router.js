@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
@@ -12,7 +13,7 @@ export default function graphqlRouter(app) {
     app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
   }
 
-  app.use('/graphql', bodyParser.json(), graphqlExpress({
+  app.use('/graphql', cors(), bodyParser.json(), graphqlExpress({
     schema: makeExecutableSchema({
       typeDefs,
       resolvers
