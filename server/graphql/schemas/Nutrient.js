@@ -1,4 +1,4 @@
-export default `
+export const typeDef = `
   type Nutrient {
     label: String,
     tag: String,
