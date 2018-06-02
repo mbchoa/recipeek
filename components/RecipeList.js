@@ -27,7 +27,7 @@ class RecipeList extends Component {
   );
 
   renderRecipes = (recipesQuery) => {
-    const recipes = map(get(recipesQuery, 'recipes.hits', []), 'recipe');
+    const recipes = get(recipesQuery, 'recipes.results', []);
     return (
       <div className="recipe-list">
         <hr />
@@ -55,20 +55,18 @@ const RecipesForIngredient = gql`
   }
   query RecipesForIngredient($ingredient: String!) {
     recipes(ingredient: $ingredient) {
-      hits {
-        recipe {
-          digest {
+      results {
+        digest {
+          ...NutrientInfo
+          sub {
             ...NutrientInfo
-            sub {
-              ...NutrientInfo
-            }
           }
-          healthLabels
-          image
-          label
-          source
-          url
         }
+        healthLabels
+        image
+        label
+        source
+        url
       }
     }
   }

@@ -1,4 +1,4 @@
-export default `
+export const typeDef = `
   type Recipe {
     calories: Float,
     dietLabels: [String],

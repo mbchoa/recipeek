@@ -10,11 +10,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import App from './components/App';
 
 import configureStore from './redux/store/configureStore';
-import initialState from './redux/store/initialState';
 
 import './styles/sheets/index.css';
 
-const store = configureStore(initialState);
+const store = configureStore();
 
 const client = new ApolloClient({
   link: new HttpLink(),
