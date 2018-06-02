@@ -1,10 +1,7 @@
 .env
-.eslintrc
-.nyc_output
 .vscode
 bundle.js
 coverage
 node_modules
 yarn-error.log
-test-results.xml
 dist

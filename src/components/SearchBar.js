@@ -6,11 +6,11 @@ import { setSearchIngredient } from '../redux/actions';
 
 class SearchBar extends Component {
   static propTypes = {
-    setSearchIngredient: PropTypes.func
+    setSearchIngredient: PropTypes.func.isRequired,
   };
 
   state = {
-    searchInput: ''
+    searchInput: '',
   };
 
   handleSearchTextChange = (e) => {
@@ -32,7 +32,8 @@ class SearchBar extends Component {
             type="text"
             placeholder="Search for a recipe..."
             onChange={ this.handleSearchTextChange }
-            value={ this.state.searchInput } />
+            value={ this.state.searchInput }
+          />
         </div>
       </form>
     );

@@ -7,7 +7,11 @@ import RecipeList from './RecipeList';
 
 class App extends PureComponent {
   static propTypes = {
-    searchIngredient: PropTypes.string
+    searchIngredient: PropTypes.string,
+  };
+
+  static defaultProps = {
+    searchIngredient: '',
   };
 
   render() {
@@ -22,6 +26,4 @@ class App extends PureComponent {
   }
 }
 
-export default connect(
-  ({ searchIngredient }) => ({ searchIngredient })
-)(App);
+export default connect(({ searchIngredient }) => ({ searchIngredient }))(App);

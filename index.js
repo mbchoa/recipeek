@@ -7,9 +7,9 @@ import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import App from './components/App';
+import App from './src/components/App';
 
-import configureStore from './redux/store/configureStore';
+import configureStore from './src/redux/store/configureStore';
 
 import './styles/sheets/index.css';
 
@@ -36,7 +36,7 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./src/components/App', () => {
     render(App);
   });
 }
