@@ -1,7 +1,7 @@
 import qs from 'qs';
 import { map } from 'lodash';
 
-import edamamApiClient from '../../../src/api-clients/edamamApi';
+import edamamApiClient from '../../api/edamamApi';
 
 export const typeDef = `
   extend type Query {
