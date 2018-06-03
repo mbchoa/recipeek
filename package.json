@@ -42,7 +42,8 @@
     ],
     "transform": {
       "^.+\\.js$": "babel-jest"
-    }
+    },
+    "roots": [ "src" ]
   },
   "homepage": "https://github.com/mbchoa/recipeek#readme",
   "dependencies": {
