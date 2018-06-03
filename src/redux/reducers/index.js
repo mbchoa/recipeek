@@ -3,9 +3,9 @@ export default (state, action) => {
     case 'SET_SEARCH_INGREDIENT':
       return {
         ...state,
-        searchIngredient: action.data
+        searchIngredient: action.data,
       };
     default:
       return state;
   }
-}
+};

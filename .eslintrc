@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-curly-spacing": 0,
+    "react/jsx-first-prop-new-line": 0,
+    "react/sort-comp": 0,
+    "react/jsx-filename-extension": 0,
+    "import/prefer-default-export": 0,
+    "react/prefer-stateless-function": 0
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ]
+}
