@@ -1,99 +1,32 @@
 {
   "name": "recipeek",
-  "version": "1.0.0",
-  "description": "Web app to quickly search and save cooking recipes and display the pertinent nutritional info in the form of keywords to the user in small snippets to allow quick review of recipes.",
-  "main": "index.js",
-  "scripts": {
-    "clean": "rm -rf coverage",
-    "test": "jest",
-    "watch": "jest --watch",
-    "dev": "export NODE_ENV=development && gulp dev",
-    "start": "gulp build && nodemon dist/apiServer.js"
-  },
-  "babel": {
-    "presets": [
-      "@babel/env",
-      "@babel/react",
-      [
-        "@babel/stage-2",
-        {
-          "decoratorsLegacy": true
-        }
-      ]
-    ],
-    "plugins": [
-      "react-hot-loader/babel"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mbchoa/recipeek.git"
-  },
-  "author": "Michael-Bryant Choa",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mbchoa/recipeek/issues"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
-  },
-  "homepage": "https://github.com/mbchoa/recipeek#readme",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.36",
-    "@babel/preset-env": "^7.0.0-beta.36",
-    "@babel/preset-react": "^7.0.0-beta.36",
-    "@babel/preset-stage-2": "^7.0.0-beta.36",
-    "apollo-client-preset": "^1.0.5",
-    "apollo-server-express": "^1.3.2",
-    "axios": "^0.17.1",
-    "babel-cli": "^6.18.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^22.0.4",
-    "babel-loader": "^7.1.2",
-    "babel-register": "^6.18.0",
-    "body-parser": "^1.18.2",
-    "compression": "^1.6.2",
-    "cors": "^2.7.1",
-    "css-loader": "^0.28.8",
-    "dotenv": "^2.0.0",
-    "express": "^4.13.4",
-    "graphql": "^0.12.3",
-    "graphql-tag": "^2.6.1",
-    "graphql-tools": "^2.14.1",
-    "gulp": "^3.9.1",
-    "http-status-codes": "^1.0.6",
-    "lodash": "^4.16.4",
-    "nodemon": "^1.9.2",
-    "prop-types": "^15.6.0",
-    "qs": "^6.5.1",
-    "react": "^15.5.0",
-    "react-apollo": "^2.0.4",
-    "react-dom": "^15.5.0",
-    "react-hot-loader": "^3.1.3",
-    "react-redux": "^4.4.5",
-    "redux": "^3.6.0",
-    "request": "^2.78.0",
-    "style-loader": "^0.19.1",
-    "webpack": "^3.10.0",
-    "webpack-dev-middleware": "^2.0.3",
-    "webpack-dev-server": "^2.9.7",
-    "webpack-node-externals": "^1.5.4"
+    "@types/jest": "^24.0.0",
+    "@types/node": "^10.12.24",
+    "@types/react": "^16.8.2",
+    "@types/react-dom": "^16.8.0",
+    "@types/styled-components": "^4.1.8",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-scripts": "2.1.3",
+    "styled-components": "^4.1.3",
+    "typescript": "^3.3.3"
   },
-  "devDependencies": {
-    "cross-env": "^3.1.3",
-    "enzyme": "^2.9.1",
-    "enzyme-to-json": "^1.5.1",
-    "eslint": "^2.11.1",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.8.1",
-    "eslint-plugin-jsx-a11y": "^1.2.2",
-    "eslint-plugin-react": "^5.1.1",
-    "jest": "^22.0.4",
-    "react-test-renderer": "^15.6.1"
-  }
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
