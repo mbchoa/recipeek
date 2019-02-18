@@ -6,6 +6,7 @@ import store from './redux/store';
 
 import Navbar from './components/Navbar';
 import SearchForm from './components/SearchForm';
+import SearchResults from './components/SearchResults';
 
 const AppContainer = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ const App = () => (
       <SearchFormDropZone>
         <SearchForm />
       </SearchFormDropZone>
+      <SearchResults />
     </AppContainer>
   </Provider>
 );
