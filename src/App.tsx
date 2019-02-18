@@ -1,5 +1,8 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import styled from 'styled-components';
+
+import store from './redux/store';
 
 import Navbar from './components/Navbar';
 import SearchForm from './components/SearchForm';
@@ -18,12 +21,14 @@ const SearchFormDropZone = styled.div`
 `;
 
 const App = () => (
-  <AppContainer>
-    <Navbar />
-    <SearchFormDropZone>
-      <SearchForm />
-    </SearchFormDropZone>
-  </AppContainer>
+  <Provider store={store}>
+    <AppContainer>
+      <Navbar />
+      <SearchFormDropZone>
+        <SearchForm />
+      </SearchFormDropZone>
+    </AppContainer>
+  </Provider>
 );
 
 export default App;

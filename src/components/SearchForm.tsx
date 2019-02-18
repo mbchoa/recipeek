@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { search } from '../api/edamam';
+import { search } from '../redux/actions';
 
 const Input = styled.input`
   border: 1px solid #113f67;
@@ -28,16 +29,19 @@ const Button = styled.button`
   }
 `;
 
-const SearchForm = () => {
+type SearchFormProps = {
+  search: (input: string) => void,
+}
+
+const SearchForm: React.FC<SearchFormProps> = ({ search }) => {
   const [input, setInput] = useState('');
   function handleChange(e: any) {
     setInput(e.target.value);
   }
 
-  async function handleSubmit(e: any) {
+  function handleSubmit(e: any) {
     e.preventDefault();
-    const response = await search(input);
-    console.log(response);
+    search(input)
   }
 
   return (
@@ -48,4 +52,4 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+export default connect(null, { search })(SearchForm);
