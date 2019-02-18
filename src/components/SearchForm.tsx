@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { search } from '../api/edamam';
 
 const Input = styled.input`
   border: 1px solid #113f67;
@@ -26,11 +28,24 @@ const Button = styled.button`
   }
 `;
 
-const SearchForm = () => (
-  <form>
-    <Input placeholder="Enter ingredients" />
-    <Button>Search</Button>
-  </form>
-);
+const SearchForm = () => {
+  const [input, setInput] = useState('');
+  function handleChange(e: any) {
+    setInput(e.target.value);
+  }
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    const response = await search(input);
+    console.log(response);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input onChange={handleChange} placeholder="Enter ingredients" value={input} />
+      <Button type="submit">Search</Button>
+    </form>
+  );
+};
 
 export default SearchForm;
