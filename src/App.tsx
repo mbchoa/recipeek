@@ -4,32 +4,33 @@ import styled from 'styled-components';
 
 import store from './redux/store';
 
-import Navbar from './components/Navbar';
+import Header from './components/Header';
 import SearchForm from './components/SearchForm';
 import SearchResults from './components/SearchResults';
 
-const AppContainer = styled.div`
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-`;
-
-const SearchFormDropZone = styled.div`
-  align-items: center;
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
+const CTAText = styled.p`
+  font-size: 18px;
+  margin: 0;
+  padding: 96px 18px;
+  text-align: center;
 `;
 
 const App = () => (
   <Provider store={store}>
-    <AppContainer>
-      <Navbar />
-      <SearchFormDropZone>
+      <Header />
+      <main>
+        <CTAText>
+          Looking for some good eats?
+          <br />
+          <br />
+          Go on and give the search a whirl.
+          <br />
+          <br />
+          You won't be disappointed.
+        </CTAText>
         <SearchForm />
-      </SearchFormDropZone>
-      <SearchResults />
-    </AppContainer>
+        <SearchResults />
+      </main>
   </Provider>
 );
 

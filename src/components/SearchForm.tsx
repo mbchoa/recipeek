@@ -4,11 +4,19 @@ import styled from 'styled-components';
 
 import { search } from '../redux/actions';
 
+import { ReactComponent as SearchIcon } from '../assets/search-icon.svg';
+
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: center;
+`;
+
 const Input = styled.input`
-  border: 1px solid #113f67;
+  border: 2px solid #113f67;
   border-radius: 5px;
   font-size: 16px;
   padding: 8px;
+  transition: .25s;
 
   &:hover {
     border-color: #34699a;
@@ -23,6 +31,8 @@ const Button = styled.button`
   margin-left: 8px;
   outline: none;
   padding: 8px;
+  transition: .25s;
+  width: 48px;
 
   &:hover {
     background-color: #34699a;
@@ -35,6 +45,7 @@ type SearchFormProps = {
 
 const SearchForm: React.FC<SearchFormProps> = ({ search }) => {
   const [input, setInput] = useState('');
+
   function handleChange(e: any) {
     setInput(e.target.value);
   }
@@ -45,10 +56,12 @@ const SearchForm: React.FC<SearchFormProps> = ({ search }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <Input onChange={handleChange} placeholder="Enter ingredients" value={input} />
-      <Button type="submit">Search</Button>
-    </form>
+      <Button type="submit">
+        <SearchIcon />
+      </Button>
+    </StyledForm>
   );
 };
 

@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = styled.div`
+const StyledHeader = styled.header`
   align-items: center;
   background-color: #113f67;
   box-sizing: border-box;
   color: white;
   display: flex;
   font-size: 18px;
-  height: 45px;
+  height: 60px;
   padding: 0 16px;
 `;
 
-const Navbar = () => (
-  <Header>
+const Header = () => (
+  <StyledHeader>
     recipeek
-  </Header>
+  </StyledHeader>
 );
 
-export default Navbar;
+export default Header;

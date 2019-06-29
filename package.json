@@ -9,6 +9,7 @@
     "@types/react-dom": "^16.8.0",
     "@types/react-redux": "^7.0.1",
     "@types/styled-components": "^4.1.8",
+    "@types/webpack-env": "^1.13.9",
     "axios": "^0.18.0",
     "qs": "^6.6.0",
     "react": "16.8.2",
