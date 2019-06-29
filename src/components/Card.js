@@ -9,10 +9,6 @@ const CardContainer = styled.article`
   height: 100%;
 `;
 
-const Card = ({ children }) => (
-  <CardContainer>
-    { children }
-  </CardContainer>
-);
+const Card = ({ children }) => <CardContainer>{children}</CardContainer>;
 
 export default Card;

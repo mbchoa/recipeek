@@ -1,16 +1,12 @@
-import {
-  SEARCH_FAILURE,
-  SEARCH_PENDING,
-  SEARCH_SUCCESSFUL,
-} from './actions';
+import { SEARCH_FAILURE, SEARCH_PENDING, SEARCH_SUCCESSFUL } from './actions';
 
 const INITIAL_STATE = {
   search: {
     error: null,
     isPending: false,
-    results: [],
+    results: []
   }
-}
+};
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -19,7 +15,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         search: {
           isPending: true,
-          results: [],
+          results: []
         }
       };
     case SEARCH_SUCCESSFUL:
@@ -27,7 +23,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         search: {
           isPending: false,
-          results: action.payload,
+          results: action.payload
         }
       };
     case SEARCH_FAILURE:
@@ -36,9 +32,10 @@ export default function reducer(state = INITIAL_STATE, action) {
         search: {
           error: action.error,
           isPending: false,
-          results: [],
+          results: []
         }
-      }
-    default: return state;
+      };
+    default:
+      return state;
   }
 }

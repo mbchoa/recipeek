@@ -8,7 +8,7 @@ const RecipeImage = styled.img`
   object-fit: cover;
 `;
 
-const SearchResultsItem = ({ image }: { image: string}) => (
+const SearchResultsItem = ({ image }: { image: string }) => (
   <Card>
     <RecipeImage src={image} />
   </Card>

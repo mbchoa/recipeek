@@ -7,8 +7,8 @@ import { EdamamHit } from '../types/edamam';
 import SearchResultsItem from './SearchResultsItem';
 
 type SearchResultsProps = {
-  results: EdamamHit[],
-}
+  results: EdamamHit[];
+};
 
 const SearchResultsList = styled.ul`
   display: flex;
@@ -30,7 +30,7 @@ const SearchResults = ({ results }: SearchResultsProps) => (
 );
 
 const mapStateToProps = (state: any) => ({
-  results: state.search.results,
+  results: state.search.results
 });
 
 export default connect(mapStateToProps)(SearchResults);

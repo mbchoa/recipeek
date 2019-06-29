@@ -17,20 +17,20 @@ const CTAText = styled.p`
 
 const App = () => (
   <Provider store={store}>
-      <Header />
-      <main>
-        <CTAText>
-          Looking for some good eats?
-          <br />
-          <br />
-          Go on and give the search a whirl.
-          <br />
-          <br />
-          You won't be disappointed.
-        </CTAText>
-        <SearchForm />
-        <SearchResults />
-      </main>
+    <Header />
+    <main>
+      <CTAText>
+        Looking for some good eats?
+        <br />
+        <br />
+        Go on and give the search a whirl.
+        <br />
+        <br />
+        You won't be disappointed.
+      </CTAText>
+      <SearchForm />
+      <SearchResults />
+    </main>
   </Provider>
 );
 

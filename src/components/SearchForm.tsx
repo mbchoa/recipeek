@@ -16,7 +16,7 @@ const Input = styled.input`
   border-radius: 5px;
   font-size: 16px;
   padding: 8px;
-  transition: .25s;
+  transition: 0.25s;
 
   &:hover {
     border-color: #34699a;
@@ -31,7 +31,7 @@ const Button = styled.button`
   margin-left: 8px;
   outline: none;
   padding: 8px;
-  transition: .25s;
+  transition: 0.25s;
   width: 48px;
 
   &:hover {
@@ -40,8 +40,8 @@ const Button = styled.button`
 `;
 
 type SearchFormProps = {
-  search: (input: string) => void,
-}
+  search: (input: string) => void;
+};
 
 const SearchForm: React.FC<SearchFormProps> = ({ search }) => {
   const [input, setInput] = useState('');
@@ -52,12 +52,16 @@ const SearchForm: React.FC<SearchFormProps> = ({ search }) => {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    search(input)
+    search(input);
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Input onChange={handleChange} placeholder="Enter ingredients" value={input} />
+      <Input
+        onChange={handleChange}
+        placeholder="Enter ingredients"
+        value={input}
+      />
       <Button type="submit">
         <SearchIcon />
       </Button>
@@ -65,4 +69,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ search }) => {
   );
 };
 
-export default connect(null, { search })(SearchForm);
+export default connect(
+  null,
+  { search }
+)(SearchForm);

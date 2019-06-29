@@ -12,10 +12,6 @@ const StyledHeader = styled.header`
   padding: 0 16px;
 `;
 
-const Header = () => (
-  <StyledHeader>
-    recipeek
-  </StyledHeader>
-);
+const Header = () => <StyledHeader>recipeek</StyledHeader>;
 
 export default Header;

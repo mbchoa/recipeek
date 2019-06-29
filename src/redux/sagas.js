@@ -4,14 +4,14 @@ import {
   SEARCH,
   searchFailure,
   searchPending,
-  searchSuccessful,
+  searchSuccessful
 } from './actions';
 import { search } from '../api/edamam';
 
 function* searchWorker({ payload }) {
   try {
     yield put(searchPending());
-    const { data } = yield call(search, payload)
+    const { data } = yield call(search, payload);
     yield put(searchSuccessful(data.hits));
   } catch (e) {
     console.error(e);
@@ -24,7 +24,5 @@ function* searchSaga() {
 }
 
 export default function* rootSaga() {
-  yield all([
-    searchSaga(),
-  ]);
+  yield all([searchSaga()]);
 }
