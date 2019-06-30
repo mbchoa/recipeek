@@ -1,9 +1,0 @@
-/** @define search-bar */
-.search-bar {
-  width: 250px;
-  margin: 0 auto;
-}
-
-.search-bar__input-field {
-  text-align: center;
-}
