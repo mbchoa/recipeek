@@ -10,23 +10,29 @@ type SearchResultsProps = {
   results: EdamamHit[];
 };
 
+const Block = styled.section`
+  padding-top: 8px;
+`;
+
 const SearchResultsList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
   list-style-type: none;
-  margin: 0 auto;
-  max-width: ;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-gap: 24px;
   padding: 0;
 `;
 
 const SearchResults = ({ results }: SearchResultsProps) => (
-  <SearchResultsList>
-    {results.map(({ recipe }) => (
-      <li>
-        <SearchResultsItem {...recipe} />
-      </li>
-    ))}
-  </SearchResultsList>
+  <Block>
+    <SearchResultsList>
+      {results.map(({ recipe }) => (
+        <li key={recipe.label}>
+          <SearchResultsItem {...recipe} />
+        </li>
+      ))}
+    </SearchResultsList>
+  </Block>
 );
 
 const mapStateToProps = (state: any) => ({
