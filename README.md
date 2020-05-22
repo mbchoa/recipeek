@@ -1,8 +1,13 @@
-# recipeek
-Simple Recipe discovery app using Edamame Recipe Search API.
+# recipeek [![Netlify Status](https://api.netlify.com/api/v1/badges/28f46ad0-bcba-4979-a39e-4d005b9718a1/deploy-status)](https://app.netlify.com/sites/recipeeek/deploys)
+Simple recipe discovery app using [Edamam Recipe Search API](https://developer.edamam.com/).
 
-## Getting Started
+## Overview
 
-1. ``npm install``
-2. ``npm start`` to run local web server
-3. ``npm run build`` to build production bundle files
+This is a React application scaffolded from a create-react-app template. It displays a single input field to query recipes based on ingredients provided by the user. Under the hood, the client application communicates with a Netlify Lambda function which handles the API request to the 3rd party Edamam recipe search endpoint.
+
+## Local Development
+
+You will need to have the `netlify-cli` installed in order to run the `ntl dev` command below. 
+
+1. ``yarn install``
+2. ``ntl dev`` to startup local Netlify [development server](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md)
