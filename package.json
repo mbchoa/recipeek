@@ -23,7 +23,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:lambda": "netlify-lambda serve --config ./webpack.functions.js src/lambda ",
     "build": "react-scripts build",
+    "build:lambda": "netlify-lambda build --config ./webpack.functions.js src/lambda",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -48,8 +50,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-typescript": "^7.9.0",
+    "dotenv-webpack": "^1.8.0",
     "husky": "^2.7.0",
     "lint-staged": "^8.2.1",
+    "netlify-lambda": "^1.6.3",
     "prettier": "^1.18.2"
   }
 }
