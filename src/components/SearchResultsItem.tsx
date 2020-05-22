@@ -9,6 +9,9 @@ const Block = styled.article`
 
 const Header = styled.h2`
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const RecipeImage = styled.img`
@@ -18,7 +21,7 @@ const RecipeImage = styled.img`
 
 const SearchResultsItem = ({ image, label }: EdamamRecipe) => (
   <Block>
-    <Header>{label}</Header>
+    <Header title={label}>{label}</Header>
     <RecipeImage src={image} />
   </Block>
 );
