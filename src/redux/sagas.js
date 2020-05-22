@@ -12,7 +12,7 @@ function* searchWorker({ payload }) {
   try {
     yield put(searchPending());
     const { data } = yield call(search, payload);
-    yield put(searchSuccessful(data.hits));
+    yield put(searchSuccessful(data));
   } catch (e) {
     console.error(e);
     yield put(searchFailure());
