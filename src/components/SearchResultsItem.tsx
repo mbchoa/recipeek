@@ -4,11 +4,22 @@ import styled from 'styled-components';
 import { EdamamRecipe } from '../types/edamam';
 
 const Block = styled.article`
-  max-width: 300px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease-in-out;
+  :hover {
+    border-color: #acacac;
+    transform: scale(1.01);
+  }
 `;
 
 const Header = styled.h2`
   font-size: 18px;
+  margin: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const RecipeImage = styled.img`
@@ -18,7 +29,7 @@ const RecipeImage = styled.img`
 
 const SearchResultsItem = ({ image, label }: EdamamRecipe) => (
   <Block>
-    <Header>{label}</Header>
+    <Header title={label}>{label}</Header>
     <RecipeImage src={image} />
   </Block>
 );
