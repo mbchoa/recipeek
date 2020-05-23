@@ -12,6 +12,7 @@
     "@types/styled-components": "^4.1.8",
     "@types/webpack-env": "^1.13.9",
     "axios": "^0.18.0",
+    "lozad": "^1.15.0",
     "qs": "^6.6.0",
     "react": "16.8.2",
     "react-dom": "16.8.2",
