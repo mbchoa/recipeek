@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { EdamamRecipe } from '../types/edamam';
 
+import LazyLoadImage from './LazyLoadImage';
+
 const Block = styled.article`
   border: 1px solid #dcdcdc;
   border-radius: 5px;
@@ -22,7 +24,7 @@ const Header = styled.h2`
   white-space: nowrap;
 `;
 
-const RecipeImage = styled.img`
+const RecipeImage = styled(LazyLoadImage)`
   object-fit: cover;
   width: 100%;
 `;
@@ -30,7 +32,7 @@ const RecipeImage = styled.img`
 const SearchResultsItem = ({ image, label }: EdamamRecipe) => (
   <Block>
     <Header title={label}>{label}</Header>
-    <RecipeImage src={image} />
+    <RecipeImage src={image} alt={label} />
   </Block>
 );
 
