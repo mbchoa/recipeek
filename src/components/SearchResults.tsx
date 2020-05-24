@@ -1,8 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { EdamamHit } from '../types/edamam';
+import { results } from '../redux/selectors';
 
 import SearchResultsItem from './SearchResultsItem';
 
@@ -35,8 +37,8 @@ const SearchResults = ({ results }: SearchResultsProps) => (
   </Block>
 );
 
-const mapStateToProps = (state: any) => ({
-  results: state.search.results
+const mapStateToProps = createStructuredSelector({
+  results
 });
 
 export default connect(mapStateToProps)(SearchResults);

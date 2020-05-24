@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { search } from '../redux/actions';
+import { hasResults, isSearchPending } from '../redux/selectors';
 
 import { ReactComponent as SearchIcon } from '../assets/search-icon.svg';
+import Spinner from './Spinner';
 
 const CTAText = styled.p`
   font-size: 18px;
@@ -48,11 +51,16 @@ const Button = styled.button`
 `;
 
 type SearchFormProps = {
+  hasResults: boolean;
+  isSearchPending: boolean;
   search: (input: string) => void;
-  displayCta: boolean;
 };
 
-const SearchForm: React.FC<SearchFormProps> = ({ search, displayCta }) => {
+const SearchForm: React.FC<SearchFormProps> = ({
+  hasResults,
+  isSearchPending,
+  search
+}) => {
   const [input, setInput] = useState('');
 
   function handleChange(e: any) {
@@ -66,7 +74,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ search, displayCta }) => {
 
   return (
     <>
-      {displayCta && (
+      {hasResults && (
         <CTAText>
           Looking for some good eats?
           <br />
@@ -84,15 +92,16 @@ const SearchForm: React.FC<SearchFormProps> = ({ search, displayCta }) => {
           value={input}
         />
         <Button type="submit">
-          <SearchIcon />
+          {isSearchPending ? <Spinner /> : <SearchIcon />}
         </Button>
       </StyledForm>
     </>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  displayCta: state.search.results.length === 0
+const mapStateToProps = createStructuredSelector({
+  hasResults,
+  isSearchPending
 });
 
 export default connect(
