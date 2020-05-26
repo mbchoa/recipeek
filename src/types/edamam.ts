@@ -15,6 +15,7 @@ export type EdamamRecipe = {
   source: string;
   totalWeight: number;
   totalTime: number;
+  uri: string;
   url: string;
   yield: Number;
 };
