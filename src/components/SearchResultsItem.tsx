@@ -51,18 +51,20 @@ const RecipeImage = styled(LazyLoadImage)`
   width: 100%;
 `;
 
-const SearchResultsItem = ({ image, label }: EdamamRecipe) => {
-  const formattedLabel: string = titleCase(label);
-  return (
-    <Block>
-      <Header title={formattedLabel}>{formattedLabel}</Header>
-      <Frame>
-        <Canvas>
-          <RecipeImage src={image} alt={formattedLabel} />
-        </Canvas>
-      </Frame>
-    </Block>
-  );
-};
+const SearchResultsItem = React.forwardRef(
+  ({ image, label }: EdamamRecipe, ref: React.Ref<HTMLElement>) => {
+    const formattedLabel: string = titleCase(label);
+    return (
+      <Block ref={ref}>
+        <Header title={formattedLabel}>{formattedLabel}</Header>
+        <Frame>
+          <Canvas>
+            <RecipeImage src={image} alt={formattedLabel} />
+          </Canvas>
+        </Frame>
+      </Block>
+    );
+  }
+);
 
 export default SearchResultsItem;

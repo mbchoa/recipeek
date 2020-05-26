@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -37,17 +37,53 @@ const SearchResultsList = styled.ul`
   }
 `;
 
-const SearchResults = ({ allRecipes }: SearchResultsProps) => (
-  <Block>
-    <SearchResultsList>
-      {allRecipes.map(({ recipe }) => (
-        <li key={recipe.label}>
-          <SearchResultsItem {...recipe} />
-        </li>
-      ))}
-    </SearchResultsList>
-  </Block>
-);
+const SearchResults = ({ allRecipes }: SearchResultsProps) => {
+  const [prevYPos, setPrevYPos] = useState<number>(0);
+  const lastItemRef: React.RefObject<HTMLElement> = useRef<HTMLElement>(null);
+  const observer = useRef(
+    new IntersectionObserver(
+      ([entry]) => {
+        // ensure we are scrolling down the page
+        if (
+          entry.isIntersecting &&
+          prevYPos < entry.boundingClientRect.bottom
+        ) {
+          setPrevYPos(entry.boundingClientRect.bottom);
+          // fetch next batch of recipes based on current number of number of recipes loaded
+          // eg: 10 recipes loaded, load recipes #11 to #20
+          alert('FETCH MORE RECIPES');
+        }
+      },
+      { root: null, rootMargin: '0px', threshold: 1.0 }
+    )
+  );
+
+  useEffect(() => {
+    if (lastItemRef && lastItemRef.current) {
+      observer.current.observe(lastItemRef.current as HTMLElement);
+    }
+  }, [allRecipes]);
+
+  return (
+    <Block>
+      <SearchResultsList>
+        {allRecipes.slice(0, allRecipes.length - 1).map(({ recipe }) => (
+          <li key={recipe.label}>
+            <SearchResultsItem {...recipe} />
+          </li>
+        ))}
+        {!!allRecipes.length && (
+          <li>
+            <SearchResultsItem
+              ref={lastItemRef}
+              {...allRecipes[allRecipes.length - 1].recipe}
+            />
+          </li>
+        )}
+      </SearchResultsList>
+    </Block>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({ allRecipes });
 
