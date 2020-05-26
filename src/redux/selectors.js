@@ -1,11 +1,18 @@
 import { createSelector } from 'reselect';
 
 const search = state => state.search;
-export const results = state => search(state).results;
+const recipesById = state => search(state).byId;
+const allRecipeIds = state => search(state).allIds;
 
-export const hasResults = createSelector(
-  results,
-  $results => $results.length === 0
+export const allRecipes = createSelector(
+  allRecipeIds,
+  recipesById,
+  (allIds, byId) => allIds.map(id => byId[id])
+);
+
+export const hasRecipes = createSelector(
+  allRecipeIds,
+  ids => ids.length === 0
 );
 
 export const isSearchPending = createSelector(
