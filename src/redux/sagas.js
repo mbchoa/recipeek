@@ -11,7 +11,7 @@ import { search } from '../api/edamam';
 function* searchWorker({ payload }) {
   try {
     yield put(searchPending());
-    const { data } = yield call(search, payload);
+    const { data } = yield call(search, { queryString: payload });
     yield put(searchSuccessful(data));
   } catch (e) {
     console.error(e);

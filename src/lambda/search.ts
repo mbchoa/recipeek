@@ -24,19 +24,24 @@ const formatHitsData = (hits: EdamamHit[]) => {
 };
 
 export async function handler(event: any) {
-  const { query } = event.queryStringParameters;
+  const { from, query, to } = event.queryStringParameters;
   try {
     const { data } = await client.get(
       `/search${qs.stringify(
         {
           app_id: process.env.REACT_APP_RECIPEEK_APP_ID,
           app_key: process.env.REACT_APP_RECIPEEK_APP_KEY,
-          q: query
+          q: query,
+          from,
+          to
         },
         { addQueryPrefix: true }
       )}`,
       { headers: { Accept: 'application/json' } }
     );
+
+    console.log('data', data);
+
     return {
       statusCode: 200,
       body: JSON.stringify(formatHitsData(data.hits))
