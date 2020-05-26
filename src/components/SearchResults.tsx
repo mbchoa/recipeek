@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { EdamamHit } from '../types/edamam';
-import { results } from '../redux/selectors';
+import { allRecipes } from '../redux/selectors';
 
 import SearchResultsItem from './SearchResultsItem';
 
 type SearchResultsProps = {
-  results: EdamamHit[];
+  allRecipes: EdamamHit[];
 };
 
 const Block = styled.section`
@@ -25,10 +25,10 @@ const SearchResultsList = styled.ul`
   padding: 0;
 `;
 
-const SearchResults = ({ results }: SearchResultsProps) => (
+const SearchResults = ({ allRecipes }: SearchResultsProps) => (
   <Block>
     <SearchResultsList>
-      {results.map(({ recipe }) => (
+      {allRecipes.map(({ recipe }) => (
         <li key={recipe.label}>
           <SearchResultsItem {...recipe} />
         </li>
@@ -37,8 +37,6 @@ const SearchResults = ({ results }: SearchResultsProps) => (
   </Block>
 );
 
-const mapStateToProps = createStructuredSelector({
-  results
-});
+const mapStateToProps = createStructuredSelector({ allRecipes });
 
 export default connect(mapStateToProps)(SearchResults);

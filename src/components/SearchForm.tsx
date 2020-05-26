@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { search } from '../redux/actions';
-import { hasResults, isSearchPending } from '../redux/selectors';
+import { hasRecipes, isSearchPending } from '../redux/selectors';
 
 import { ReactComponent as SearchIcon } from '../assets/search-icon.svg';
 import Spinner from './Spinner';
@@ -51,13 +51,13 @@ const Button = styled.button`
 `;
 
 type SearchFormProps = {
-  hasResults: boolean;
+  hasRecipes: boolean;
   isSearchPending: boolean;
   search: (input: string) => void;
 };
 
 const SearchForm: React.FC<SearchFormProps> = ({
-  hasResults,
+  hasRecipes,
   isSearchPending,
   search
 }) => {
@@ -74,7 +74,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
 
   return (
     <>
-      {hasResults && (
+      {hasRecipes && (
         <CTAText>
           Looking for some good eats?
           <br />
@@ -100,7 +100,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  hasResults,
+  hasRecipes,
   isSearchPending
 });
 
