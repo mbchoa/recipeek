@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { search } from '../redux/actions';
 import { hasRecipes, isSearchPending } from '../redux/selectors';
+import { space } from '../enums/space';
 
 import { ReactComponent as SearchIcon } from '../assets/search-icon.svg';
 import Spinner from './Spinner';
@@ -19,7 +20,7 @@ const CTAText = styled.p`
 const StyledForm = styled.form`
   display: flex;
   justify-content: center;
-  padding: 12px 0;
+  padding: ${space['sp-12']} 0;
 `;
 
 const Input = styled.input`
@@ -39,9 +40,9 @@ const Button = styled.button`
   border-radius: 5px;
   color: white;
   font-size: 16px;
-  margin-left: 8px;
+  margin-left: ${space['sp-8']};
   outline: none;
-  padding: 8px;
+  padding: ${space['sp-8']};
   transition: 0.25s;
   width: 48px;
 

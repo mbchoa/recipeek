@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { EdamamRecipe } from '../types/edamam';
 import { titleCase } from '../utils';
+import { space } from '../enums/space';
 
 import LazyLoadImage from './LazyLoadImage';
 
@@ -19,7 +20,7 @@ const Block = styled.article`
 
 const Header = styled.h2`
   font-size: 18px;
-  margin: 16px;
+  margin: ${space['sp-16']};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
