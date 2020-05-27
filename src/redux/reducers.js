@@ -8,7 +8,9 @@ import {
 const INITIAL_STATE = {
   search: {
     error: null,
-    isPending: false,
+    isPending: false
+  },
+  recipes: {
     byId: {},
     allIds: []
   }
@@ -31,7 +33,9 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         search: {
           ...state.search,
-          isPending: false,
+          isPending: false
+        },
+        recipes: {
           byId: action.payload.reduce(
             (output, hit) => ({
               ...output,
@@ -46,7 +50,6 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         search: {
-          ...state.search,
           error: action.error,
           isPending: false
         }
