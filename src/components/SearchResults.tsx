@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { EdamamHit } from '../types/edamam';
 import { allRecipes } from '../redux/selectors';
+import { device } from '../enums/device';
 
 import SearchResultsItem from './SearchResultsItem';
 
@@ -13,17 +14,24 @@ type SearchResultsProps = {
 };
 
 const Block = styled.section`
-  margin: 0 auto;
-  max-width: 954px;
+  display: flex;
+  justify-content: center;
 `;
 
 const SearchResultsList = styled.ul`
   display: grid;
   list-style-type: none;
-  grid-template-columns: repeat(3, 302px);
+  grid-template-columns: repeat(1, 302px);
   grid-gap: 24px;
   padding: 0;
-  width: 100%;
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, 302px);
+  }
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(3, 302px);
+  }
 `;
 
 const SearchResults = ({ allRecipes }: SearchResultsProps) => (
