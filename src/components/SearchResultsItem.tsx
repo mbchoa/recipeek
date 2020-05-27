@@ -26,7 +26,27 @@ const Header = styled.h2`
   white-space: nowrap;
 `;
 
+const Frame = styled.figure`
+  background-color: gray;
+  display: block;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  padding-bottom: 100%;
+  position: relative;
+`;
+
+const Canvas = styled.div`
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+`;
+
 const RecipeImage = styled(LazyLoadImage)`
+  border-radius: 0 0 5px 5px;
+  display: block;
   object-fit: cover;
   width: 100%;
 `;
@@ -36,7 +56,11 @@ const SearchResultsItem = ({ image, label }: EdamamRecipe) => {
   return (
     <Block>
       <Header title={formattedLabel}>{formattedLabel}</Header>
-      <RecipeImage src={image} alt={formattedLabel} />
+      <Frame>
+        <Canvas>
+          <RecipeImage src={image} alt={formattedLabel} />
+        </Canvas>
+      </Frame>
     </Block>
   );
 };
