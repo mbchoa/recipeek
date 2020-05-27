@@ -13,16 +13,17 @@ type SearchResultsProps = {
 };
 
 const Block = styled.section`
-  padding-top: 8px;
+  margin: 0 auto;
+  max-width: 954px;
 `;
 
 const SearchResultsList = styled.ul`
   display: grid;
-  justify-content: center;
   list-style-type: none;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(3, 302px);
   grid-gap: 24px;
   padding: 0;
+  width: 100%;
 `;
 
 const SearchResults = ({ allRecipes }: SearchResultsProps) => (
