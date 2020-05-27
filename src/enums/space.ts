@@ -10,6 +10,8 @@ type Space = {
   'sp-28': string;
   'sp-32': string;
   'sp-36': string;
+  'sp-48': string;
+  'sp-64': string;
 };
 
 /**
@@ -20,5 +22,8 @@ export const space: Space = [...Array(9).keys()].reduce(
     ...output,
     [`sp-${(index + 1) * spacingUnit}`]: `${(index + 1) * spacingUnit}px`
   }),
-  {}
+  {
+    'sp-48': '48px',
+    'sp-64': '64px'
+  }
 ) as Space;

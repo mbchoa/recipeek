@@ -17,6 +17,7 @@ type SearchResultsProps = {
 const Block = styled.section`
   display: flex;
   justify-content: center;
+  padding: ${space['sp-32']} 0 ${space['sp-64']};
 `;
 
 const SearchResultsList = styled.ul`
