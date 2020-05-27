@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { space } from '../enums/space';
+
 const Block = styled.footer`
   align-items: flex-end;
   background-color: #113f67;
@@ -9,7 +11,7 @@ const Block = styled.footer`
   justify-content: center;
   flex-shrink: 0;
   height: 75px;
-  padding: 16px;
+  padding: ${space['sp-16']};
 `;
 
 const Link = styled.a`

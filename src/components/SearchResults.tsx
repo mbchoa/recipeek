@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { EdamamHit } from '../types/edamam';
 import { allRecipes } from '../redux/selectors';
 import { device } from '../enums/device';
+import { space } from '../enums/space';
 
 import SearchResultsItem from './SearchResultsItem';
 
@@ -22,7 +23,8 @@ const SearchResultsList = styled.ul`
   display: grid;
   list-style-type: none;
   grid-template-columns: repeat(1, 302px);
-  grid-gap: 24px;
+  grid-gap: ${space['sp-24']};
+  margin: 0;
   padding: 0;
 
   @media ${device.tablet} {
