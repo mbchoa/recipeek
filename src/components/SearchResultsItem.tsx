@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { EdamamRecipe } from '../types/edamam';
+import { titleCase } from '../utils';
 
 import LazyLoadImage from './LazyLoadImage';
 
@@ -29,11 +30,14 @@ const RecipeImage = styled(LazyLoadImage)`
   width: 100%;
 `;
 
-const SearchResultsItem = ({ image, label }: EdamamRecipe) => (
-  <Block>
-    <Header title={label}>{label}</Header>
-    <RecipeImage src={image} alt={label} />
-  </Block>
-);
+const SearchResultsItem = ({ image, label }: EdamamRecipe) => {
+  const formattedLabel: string = titleCase(label);
+  return (
+    <Block>
+      <Header title={formattedLabel}>{formattedLabel}</Header>
+      <RecipeImage src={image} alt={formattedLabel} />
+    </Block>
+  );
+};
 
 export default SearchResultsItem;
