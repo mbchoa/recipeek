@@ -3,6 +3,8 @@ import qs from 'qs';
 
 import { EdamamHit } from '../types/edamam';
 
+import redis, { redisGet, getKey } from './redis';
+
 const client: AxiosInstance = axios.create({
   baseURL: 'https://api.edamam.com',
   timeout: 5000
@@ -23,8 +25,36 @@ const formatHitsData = (hits: EdamamHit[]) => {
   }));
 };
 
+const handleError = (err: Error) => {
+  // output to netlify function log
+  console.log(err);
+  return {
+    statusCode: 500,
+    body: JSON.stringify(err.message)
+  };
+};
+
 export async function handler(event: any) {
-  const { from, query, to } = event.queryStringParameters;
+  // default the from and to values here to properly generate a Redis key
+  const { from = 0, query, to = 10 } = event.queryStringParameters;
+
+  // get Redis key based on query params
+  const redisKey = getKey({ from, query, to });
+
+  // check if API query exists in Redis cache
+  try {
+    const value: string = await redisGet(redisKey);
+    if (value) {
+      return {
+        statusCode: 200,
+        body: value
+      };
+    }
+  } catch (err) {
+    return handleError(err);
+  }
+
+  // Redis cache missed, fetch data from API endpoint and cache response
   try {
     const { data } = await client.get(
       `/search${qs.stringify(
@@ -40,15 +70,15 @@ export async function handler(event: any) {
       { headers: { Accept: 'application/json' } }
     );
 
+    // cache API response
+    const formattedData: string = JSON.stringify(formatHitsData(data.hits));
+    redis.set(redisKey, formattedData);
+
     return {
       statusCode: 200,
-      body: JSON.stringify(formatHitsData(data.hits))
+      body: formattedData
     };
   } catch (err) {
-    console.log(err); // output to netlify function log
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ msg: err.message }) // Could be a custom message or object i.e. JSON.stringify(err)
-    };
+    return handleError(err);
   }
 }
