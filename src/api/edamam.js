@@ -1,10 +1,14 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const search = queryString =>
+export const search = ({ from, queryString, to }) =>
   axios.get(
     `/.netlify/functions/search${qs.stringify(
-      { query: queryString },
+      {
+        from,
+        query: queryString,
+        to
+      },
       { addQueryPrefix: true }
     )}`
   );

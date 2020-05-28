@@ -1,4 +1,5 @@
 import {
+  FETCH_MORE_RECIPES_SUCCESSFUL,
   SEARCH,
   SEARCH_FAILURE,
   SEARCH_PENDING,
@@ -6,9 +7,12 @@ import {
 } from './actions';
 
 const INITIAL_STATE = {
+  currentSearchQuery: '',
   search: {
     error: null,
-    isPending: false,
+    isPending: false
+  },
+  recipes: {
     byId: {},
     allIds: []
   }
@@ -17,7 +21,10 @@ const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SEARCH:
-      return { ...INITIAL_STATE };
+      return {
+        ...INITIAL_STATE,
+        currentSearchQuery: action.payload
+      };
     case SEARCH_PENDING:
       return {
         ...state,
@@ -31,7 +38,9 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         search: {
           ...state.search,
-          isPending: false,
+          isPending: false
+        },
+        recipes: {
           byId: action.payload.reduce(
             (output, hit) => ({
               ...output,
@@ -46,9 +55,25 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         search: {
-          ...state.search,
           error: action.error,
           isPending: false
+        }
+      };
+    case FETCH_MORE_RECIPES_SUCCESSFUL:
+      return {
+        ...state,
+        recipes: {
+          byId: action.payload.reduce(
+            (output, hit) => ({
+              ...output,
+              [hit.recipe.id]: hit
+            }),
+            { ...state.recipes.byId }
+          ),
+          allIds: [
+            ...state.recipes.allIds,
+            ...action.payload.map(hit => hit.recipe.id)
+          ]
         }
       };
     default:

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { EdamamHit } from '../types/edamam';
+import { fetchMoreRecipes } from '../redux/actions';
 import { allRecipes } from '../redux/selectors';
 import { device } from '../enums/device';
 import { space } from '../enums/space';
@@ -12,6 +13,7 @@ import SearchResultsItem from './SearchResultsItem';
 
 type SearchResultsProps = {
   allRecipes: EdamamHit[];
+  fetchMoreRecipes: () => void;
 };
 
 const Block = styled.section`
@@ -37,18 +39,58 @@ const SearchResultsList = styled.ul`
   }
 `;
 
-const SearchResults = ({ allRecipes }: SearchResultsProps) => (
-  <Block>
-    <SearchResultsList>
-      {allRecipes.map(({ recipe }) => (
-        <li key={recipe.label}>
-          <SearchResultsItem {...recipe} />
-        </li>
-      ))}
-    </SearchResultsList>
-  </Block>
-);
+const SearchResults: React.FC<SearchResultsProps> = ({
+  allRecipes,
+  fetchMoreRecipes
+}) => {
+  const [prevYPos, setPrevYPos] = useState<number>(0);
+  const lastItemRef: React.RefObject<HTMLElement> = useRef<HTMLElement>(null);
+  const observer = useRef(
+    new IntersectionObserver(
+      ([entry]) => {
+        // ensure we are scrolling down the page
+        if (
+          entry.isIntersecting &&
+          prevYPos < entry.boundingClientRect.bottom
+        ) {
+          setPrevYPos(entry.boundingClientRect.bottom);
+          fetchMoreRecipes();
+        }
+      },
+      { root: null, rootMargin: '0px', threshold: 1.0 }
+    )
+  );
+
+  useEffect(() => {
+    if (lastItemRef && lastItemRef.current) {
+      observer.current.observe(lastItemRef.current as HTMLElement);
+    }
+  }, [allRecipes]);
+
+  return (
+    <Block>
+      <SearchResultsList>
+        {allRecipes.slice(0, allRecipes.length - 1).map(({ recipe }) => (
+          <li key={recipe.label}>
+            <SearchResultsItem {...recipe} />
+          </li>
+        ))}
+        {!!allRecipes.length && (
+          <li>
+            <SearchResultsItem
+              ref={lastItemRef}
+              {...allRecipes[allRecipes.length - 1].recipe}
+            />
+          </li>
+        )}
+      </SearchResultsList>
+    </Block>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({ allRecipes });
-
-export default connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = { fetchMoreRecipes };
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchResults);
