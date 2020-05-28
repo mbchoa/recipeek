@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { EdamamHit } from '../types/edamam';
+import { fetchMoreRecipes } from '../redux/actions';
 import { allRecipes } from '../redux/selectors';
 import { device } from '../enums/device';
 import { space } from '../enums/space';
@@ -12,6 +13,7 @@ import SearchResultsItem from './SearchResultsItem';
 
 type SearchResultsProps = {
   allRecipes: EdamamHit[];
+  fetchMoreRecipes: () => void;
 };
 
 const Block = styled.section`
@@ -37,7 +39,10 @@ const SearchResultsList = styled.ul`
   }
 `;
 
-const SearchResults = ({ allRecipes }: SearchResultsProps) => {
+const SearchResults: React.FC<SearchResultsProps> = ({
+  allRecipes,
+  fetchMoreRecipes
+}) => {
   const [prevYPos, setPrevYPos] = useState<number>(0);
   const lastItemRef: React.RefObject<HTMLElement> = useRef<HTMLElement>(null);
   const observer = useRef(
@@ -49,9 +54,7 @@ const SearchResults = ({ allRecipes }: SearchResultsProps) => {
           prevYPos < entry.boundingClientRect.bottom
         ) {
           setPrevYPos(entry.boundingClientRect.bottom);
-          // fetch next batch of recipes based on current number of number of recipes loaded
-          // eg: 10 recipes loaded, load recipes #11 to #20
-          alert('FETCH MORE RECIPES');
+          fetchMoreRecipes();
         }
       },
       { root: null, rootMargin: '0px', threshold: 1.0 }
@@ -86,5 +89,8 @@ const SearchResults = ({ allRecipes }: SearchResultsProps) => {
 };
 
 const mapStateToProps = createStructuredSelector({ allRecipes });
-
-export default connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = { fetchMoreRecipes };
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchResults);

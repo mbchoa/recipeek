@@ -19,7 +19,9 @@ export const FETCH_MORE_RECIPES_PENDING = 'fetch more recipes pending';
 export const fetchMoreRecipesPending = fsa(FETCH_MORE_RECIPES_PENDING);
 
 export const FETCH_MORE_RECIPES_SUCCESSFUL = 'fetch more recipes successful';
-export const fetchMoreRecipesSuccessful = fsa(FETCH_MORE_RECIPES_SUCCESSFUL);
+export const fetchMoreRecipesSuccessful = fsaPayload(
+  FETCH_MORE_RECIPES_SUCCESSFUL
+);
 
 export const FETCH_MORE_RECIPES_FAILURE = 'fetch more recipes failure';
 export const fetchMoreRecipesFailure = fsa(FETCH_MORE_RECIPES_FAILURE);

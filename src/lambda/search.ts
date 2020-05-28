@@ -40,8 +40,6 @@ export async function handler(event: any) {
       { headers: { Accept: 'application/json' } }
     );
 
-    console.log('data', data);
-
     return {
       statusCode: 200,
       body: JSON.stringify(formatHitsData(data.hits))

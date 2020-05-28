@@ -5,6 +5,13 @@ const recipes = state => state.recipes;
 const recipesById = state => recipes(state).byId;
 const allRecipeIds = state => recipes(state).allIds;
 
+export const currentSearchQuery = state => state.currentSearchQuery;
+
+export const numLoadedRecipes = createSelector(
+  allRecipeIds,
+  $allRecipeIds => $allRecipeIds.length
+);
+
 export const allRecipes = createSelector(
   allRecipeIds,
   recipesById,
