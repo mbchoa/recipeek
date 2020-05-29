@@ -76,7 +76,7 @@ export async function handler(event: any) {
 
     // cache API response
     const formattedData: string = JSON.stringify(formatHitsData(data.hits));
-    redis.set(redisKey, formattedData);
+    redis.setex(redisKey, 2678400, formattedData);
 
     return {
       statusCode: 200,
