@@ -2,8 +2,8 @@ import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 
 import { EdamamHit } from '../types/edamam';
-
 import redis, { redisGet, getKey } from './redis';
+import { BATCH_RECIPE_FETCH_SIZE } from '../enums/app';
 
 const client: AxiosInstance = axios.create({
   baseURL: 'https://api.edamam.com',
@@ -36,7 +36,11 @@ const handleError = (err: Error) => {
 
 export async function handler(event: any) {
   // default the from and to values here to properly generate a Redis key
-  const { from = 0, query, to = 10 } = event.queryStringParameters;
+  const {
+    from = 0,
+    query,
+    to = BATCH_RECIPE_FETCH_SIZE
+  } = event.queryStringParameters;
 
   // get Redis key based on query params
   const redisKey = getKey({ from, query, to });
@@ -72,7 +76,7 @@ export async function handler(event: any) {
 
     // cache API response
     const formattedData: string = JSON.stringify(formatHitsData(data.hits));
-    redis.set(redisKey, formattedData);
+    redis.setex(redisKey, 2678400, formattedData);
 
     return {
       statusCode: 200,
