@@ -12,6 +12,7 @@ import {
 } from './actions';
 import { search } from '../api/edamam';
 import { currentSearchQuery, numLoadedRecipes } from './selectors';
+import { BATCH_RECIPE_FETCH_SIZE } from '../enums/app';
 
 function* searchWorker({ payload }) {
   yield put(searchPending());
@@ -36,7 +37,11 @@ function* fetchMoreRecipesWorker() {
   const from = yield select(numLoadedRecipes);
 
   try {
-    const { data } = yield call(search, { from, queryString, to: from + 10 });
+    const { data } = yield call(search, {
+      from,
+      queryString,
+      to: from + BATCH_RECIPE_FETCH_SIZE
+    });
     yield put(fetchMoreRecipesSuccessful(data));
   } catch (e) {
     console.error(e);

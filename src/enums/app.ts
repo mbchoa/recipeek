@@ -1,0 +1,1 @@
+export const BATCH_RECIPE_FETCH_SIZE = 12;
