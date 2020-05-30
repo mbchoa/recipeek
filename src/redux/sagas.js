@@ -16,9 +16,8 @@ import { BATCH_RECIPE_FETCH_SIZE } from '../enums/app';
 
 function* searchWorker({ payload }) {
   yield put(searchPending());
-
   try {
-    const { data } = yield call(search, { queryString: payload });
+    const { data } = yield call(search, { queryString: payload.toLowerCase() });
     yield put(searchSuccessful(data));
   } catch (e) {
     console.error(e);
