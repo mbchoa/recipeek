@@ -2,10 +2,12 @@ import { createSelector } from 'reselect';
 
 const search = state => state.search;
 const recipes = state => state.recipes;
+const fetchMore = state => state.fetchMore;
 const recipesById = state => recipes(state).byId;
 const allRecipeIds = state => recipes(state).allIds;
 
 export const currentSearchQuery = state => state.currentSearchQuery;
+export const isFetchMoreRecipesPending = state => fetchMore(state).isPending;
 
 export const numLoadedRecipes = createSelector(
   allRecipeIds,

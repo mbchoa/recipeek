@@ -1,4 +1,6 @@
 import {
+  FETCH_MORE_RECIPES_FAILURE,
+  FETCH_MORE_RECIPES_PENDING,
   FETCH_MORE_RECIPES_SUCCESSFUL,
   SEARCH,
   SEARCH_FAILURE,
@@ -10,6 +12,9 @@ const INITIAL_STATE = {
   currentSearchQuery: '',
   search: {
     error: null,
+    isPending: false
+  },
+  fetchMore: {
     isPending: false
   },
   recipes: {
@@ -59,9 +64,19 @@ export default function reducer(state = INITIAL_STATE, action) {
           isPending: false
         }
       };
+    case FETCH_MORE_RECIPES_PENDING:
+      return {
+        ...state,
+        fetchMore: {
+          isPending: true
+        }
+      };
     case FETCH_MORE_RECIPES_SUCCESSFUL:
       return {
         ...state,
+        fetchMore: {
+          isPending: false
+        },
         recipes: {
           byId: action.payload.reduce(
             (output, hit) => ({
@@ -74,6 +89,13 @@ export default function reducer(state = INITIAL_STATE, action) {
             ...state.recipes.allIds,
             ...action.payload.map(hit => hit.recipe.id)
           ]
+        }
+      };
+    case FETCH_MORE_RECIPES_FAILURE:
+      return {
+        ...state,
+        fetchMore: {
+          isPending: false
         }
       };
     default:

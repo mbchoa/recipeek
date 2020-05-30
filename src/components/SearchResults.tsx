@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { EdamamHit } from '../types/edamam';
 import { fetchMoreRecipes } from '../redux/actions';
-import { allRecipes } from '../redux/selectors';
+import { allRecipes, isFetchMoreRecipesPending } from '../redux/selectors';
 import { device } from '../enums/device';
 import { space } from '../enums/space';
 
@@ -15,6 +15,7 @@ import Spinner from './Spinner';
 type SearchResultsProps = {
   allRecipes: EdamamHit[];
   fetchMoreRecipes: () => void;
+  isFetchMoreRecipesPending: boolean;
 };
 
 const Block = styled.section`
@@ -49,7 +50,8 @@ const SpinnerContainer = styled.div`
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   allRecipes,
-  fetchMoreRecipes
+  fetchMoreRecipes,
+  isFetchMoreRecipesPending
 }) => {
   const [prevYPos, setPrevYPos] = useState<number>(0);
   const lastItemRef: React.RefObject<HTMLElement> = useRef<HTMLElement>(null);
@@ -62,7 +64,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
           prevYPos < entry.boundingClientRect.bottom
         ) {
           setPrevYPos(entry.boundingClientRect.bottom);
-          // fetchMoreRecipes();
+          fetchMoreRecipes();
         }
       },
       { root: null, rootMargin: '0px', threshold: 1.0 }
@@ -93,13 +95,17 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         )}
       </SearchResultsList>
       <SpinnerContainer>
-        <Spinner color="#113f67" width={50} />
+        {isFetchMoreRecipesPending && <Spinner color="#113f67" width={50} />}
       </SpinnerContainer>
     </Block>
   );
 };
 
-const mapStateToProps = createStructuredSelector({ allRecipes });
+const mapStateToProps = createStructuredSelector({
+  allRecipes,
+  isFetchMoreRecipesPending
+});
+
 const mapDispatchToProps = { fetchMoreRecipes };
 export default connect(
   mapStateToProps,
