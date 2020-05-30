@@ -8,6 +8,7 @@ export type EdamamIngredient = {
 export type EdamamRecipe = {
   calories: number;
   dietLabels: EdamamDietLabel[];
+  id: string;
   image: string;
   ingredients: EdamamIngredient[];
   ingredientLines: string[];
