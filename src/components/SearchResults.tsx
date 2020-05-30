@@ -81,7 +81,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
     <Block>
       <SearchResultsList>
         {allRecipes.slice(0, allRecipes.length - 1).map(({ recipe }) => (
-          <li key={recipe.label}>
+          <li key={recipe.id}>
             <SearchResultsItem {...recipe} />
           </li>
         ))}
