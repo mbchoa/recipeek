@@ -1,6 +1,11 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+type Props = {
+  color?: string;
+  width?: number;
+};
+
 const svgAnimation = keyframes`
   0% {
     transform: rotateZ(0deg);
@@ -12,7 +17,7 @@ const svgAnimation = keyframes`
 
 const Svg = styled.svg`
   animation: 2s linear infinite ${svgAnimation};
-  max-width: 30px;
+  width: ${({ width }) => `${width}px`};
 `;
 
 const circleAnimation = keyframes`
@@ -21,13 +26,13 @@ const circleAnimation = keyframes`
     stroke-dashoffset: 280;
     transform: rotate(0);
   }
-  
+
   50%,
   75% {
     stroke-dashoffset: 75;
     transform: rotate(45deg);
   }
-  
+
   100% {
     stroke-dashoffset: 280;
     transform: rotate(360deg);
@@ -38,7 +43,7 @@ const Circle = styled.circle`
   animation: 1.4s ease-in-out infinite both ${circleAnimation};
   display: block;
   fill: transparent;
-  stroke: white;
+  stroke: ${({ color }) => color};
   stroke-linecap: round;
   stroke-dasharray: 283;
   stroke-dashoffset: 280;
@@ -46,9 +51,9 @@ const Circle = styled.circle`
   transform-origin: 50% 50%;
 `;
 
-const Spinner = () => (
-  <Svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <Circle cx="50" cy="50" r="45" />
+const Spinner: React.FC<Props> = ({ color = 'white', width = 30 }) => (
+  <Svg width={width} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <Circle color={color} cx="50" cy="50" r="45" />
   </Svg>
 );
 

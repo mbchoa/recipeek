@@ -10,6 +10,7 @@ import { device } from '../enums/device';
 import { space } from '../enums/space';
 
 import SearchResultsItem from './SearchResultsItem';
+import Spinner from './Spinner';
 
 type SearchResultsProps = {
   allRecipes: EdamamHit[];
@@ -17,7 +18,9 @@ type SearchResultsProps = {
 };
 
 const Block = styled.section`
+  align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: ${space['sp-32']} 0 ${space['sp-64']};
 `;
@@ -39,6 +42,11 @@ const SearchResultsList = styled.ul`
   }
 `;
 
+const SpinnerContainer = styled.div`
+  height: 53px;
+  margin-top: ${space['sp-36']};
+`;
+
 const SearchResults: React.FC<SearchResultsProps> = ({
   allRecipes,
   fetchMoreRecipes
@@ -54,7 +62,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
           prevYPos < entry.boundingClientRect.bottom
         ) {
           setPrevYPos(entry.boundingClientRect.bottom);
-          fetchMoreRecipes();
+          // fetchMoreRecipes();
         }
       },
       { root: null, rootMargin: '0px', threshold: 1.0 }
@@ -84,6 +92,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
           </li>
         )}
       </SearchResultsList>
+      <SpinnerContainer>
+        <Spinner color="#113f67" width={50} />
+      </SpinnerContainer>
     </Block>
   );
 };
