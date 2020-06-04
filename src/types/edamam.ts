@@ -96,7 +96,7 @@ export type EdamamRecipe = {
   totalTime: number;
   uri: string;
   url: string;
-  yield: Number;
+  yield: number;
 };
 
 export type EdamamHit = {
