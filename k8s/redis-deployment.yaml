@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: recipeek
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipeek
+  template:
+    metadata:
+      labels:
+        app: recipeek
+    spec:
+      containers:
+      - name: redis
+        image: redis:6.0.4-alpine
+        ports:
+        - containerPort: 6379
