@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import styled from 'styled-components';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import store from './redux/store';
 
@@ -14,14 +15,20 @@ const Main = styled.main`
 `;
 
 const App = () => (
-  <Provider store={store}>
-    <Header />
-    <Main>
-      <SearchForm />
-      <SearchResults />
-    </Main>
-    <Footer />
-  </Provider>
+  <BrowserRouter>
+    <Provider store={store}>
+      <Header />
+      <Main>
+        <Switch>
+          <Route exact path="/">
+            <SearchForm />
+            <SearchResults />
+          </Route>
+        </Switch>
+      </Main>
+      <Footer />
+    </Provider>
+  </BrowserRouter>
 );
 
 export default App;
