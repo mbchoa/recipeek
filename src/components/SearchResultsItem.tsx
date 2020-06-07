@@ -18,12 +18,21 @@ const Block = styled.article`
   }
 `;
 
-const Header = styled.h2`
-  font-size: 18px;
+const Header = styled.header`
   margin: ${space['sp-16']};
+`;
+
+const RecipeTitle = styled.h2`
+  font-size: ${space['sp-16']};
+  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+const RecipeAuthor = styled.p`
+  font-size: ${space['sp-12']};
+  margin: 0;
 `;
 
 const Frame = styled.figure`
@@ -77,13 +86,16 @@ const Content = styled.section`
 
 const SearchResultsItem = React.forwardRef(
   (
-    { image, label, totalNutrients, yield: numServings }: EdamamRecipe,
+    { image, label, source, totalNutrients, yield: numServings }: EdamamRecipe,
     ref: React.Ref<HTMLElement>
   ) => {
     const formattedLabel: string = titleCase(label);
     return (
       <Block ref={ref}>
-        <Header title={formattedLabel}>{formattedLabel}</Header>
+        <Header title={formattedLabel}>
+          <RecipeTitle>{formattedLabel}</RecipeTitle>
+          <RecipeAuthor>{source}</RecipeAuthor>
+        </Header>
         <Content>
           <Frame>
             <Canvas>
