@@ -86,7 +86,14 @@ const Content = styled.section`
 
 const SearchResultsItem = React.forwardRef(
   (
-    { image, label, source, totalNutrients, yield: numServings }: EdamamRecipe,
+    {
+      calories,
+      image,
+      label,
+      source,
+      totalNutrients,
+      yield: numServings
+    }: EdamamRecipe,
     ref: React.Ref<HTMLElement>
   ) => {
     const formattedLabel: string = titleCase(label);
@@ -104,6 +111,7 @@ const SearchResultsItem = React.forwardRef(
           </Frame>
           <NutritionOverlayLayout>
             <NutritionOverlay
+              calories={calories}
               numServings={numServings}
               totalNutrients={totalNutrients}
             />
