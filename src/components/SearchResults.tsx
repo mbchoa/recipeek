@@ -54,7 +54,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   isFetchMoreRecipesPending
 }) => {
   const [prevYPos, setPrevYPos] = useState<number>(0);
-  const lastItemRef: React.RefObject<HTMLElement> = useRef<HTMLElement>(null);
+  const lastItemRef: React.RefObject<HTMLAnchorElement> = useRef<
+    HTMLAnchorElement
+  >(null);
   const observer = useRef(
     new IntersectionObserver(
       ([entry]) => {

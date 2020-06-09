@@ -8,9 +8,12 @@ import { space } from '../enums/space';
 import LazyLoadImage from './LazyLoadImage';
 import NutritionOverlay from './NutritionOverlay';
 
-const Block = styled.article`
+const Block = styled.a`
   border: 1px solid #dcdcdc;
   border-radius: 5px;
+  color: black;
+  display: block;
+  text-decoration: none;
   transition: all 0.2s ease-in-out;
   :hover {
     box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
@@ -92,13 +95,14 @@ const SearchResultsItem = React.forwardRef(
       label,
       source,
       totalNutrients,
+      url,
       yield: numServings
     }: EdamamRecipe,
-    ref: React.Ref<HTMLElement>
+    ref: React.Ref<HTMLAnchorElement>
   ) => {
     const formattedLabel: string = titleCase(label);
     return (
-      <Block ref={ref}>
+      <Block ref={ref} href={url} target="_blank" rel="noopener noreferrer">
         <Header title={formattedLabel}>
           <RecipeTitle>{formattedLabel}</RecipeTitle>
           <RecipeAuthor>{source}</RecipeAuthor>
