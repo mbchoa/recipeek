@@ -20,6 +20,9 @@ type GetKeyParams = {
 export const getKey = ({ from, query, to }: GetKeyParams): string =>
   `${query}:${from}-${to}`;
 
+/**
+ * Returns Promise-ified version of the native Redis client's .get() method.
+ */
 export const redisGet = promisify(client.get).bind(client);
 
 export default client;

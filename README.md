@@ -36,6 +36,7 @@ REACT_APP_REDIS_PASSWORD=somepassword (this is defined in the redis.conf file)
 
 1. ``yarn install``
 2. ``ntl dev`` to startup local Netlify [development server](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md)
+3. Navigate to http://localhost:8888
 
 ## Roadmap
 
