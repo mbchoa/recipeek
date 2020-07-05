@@ -2,7 +2,6 @@ import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 
 import { EdamamHit } from '../types/edamam';
-import redis, { redisGet, getKey } from './redis';
 import { BATCH_RECIPE_FETCH_SIZE } from '../enums/app';
 
 const client: AxiosInstance = axios.create({
@@ -42,22 +41,6 @@ export async function handler(event: any) {
     to = BATCH_RECIPE_FETCH_SIZE
   } = event.queryStringParameters;
 
-  // get Redis key based on query params
-  const redisKey = getKey({ from, query, to });
-
-  // check if API query exists in Redis cache
-  try {
-    const value: string = await redisGet(redisKey);
-    if (value) {
-      return {
-        statusCode: 200,
-        body: value
-      };
-    }
-  } catch (err) {
-    return handleError(err);
-  }
-
   // Redis cache missed, fetch data from API endpoint and cache response
   try {
     const { data } = await client.get(
@@ -76,7 +59,6 @@ export async function handler(event: any) {
 
     // cache API response
     const formattedData: string = JSON.stringify(formatHitsData(data.hits));
-    redis.setex(redisKey, 2678400, formattedData);
 
     return {
       statusCode: 200,
