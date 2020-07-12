@@ -6,18 +6,18 @@ import { createStructuredSelector } from 'reselect';
 import { search } from '../redux/actions';
 import { hasRecipes, isSearchPending } from '../redux/selectors';
 import { space } from '../enums/space';
+import { size } from '../enums/typography';
 
 import { ReactComponent as SearchIcon } from '../assets/search-icon.svg';
 import Spinner from './Spinner';
 
-const CTAText = styled.p`
-  font-size: 18px;
-  margin: 0;
-  padding: 96px 18px;
+const Header = styled.header`
+  font-size: ${size['giga']};
+  margin: 0 0 ${space['sp-48']};
   text-align: center;
 `;
 
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   padding: ${space['sp-12']} 0;
@@ -74,29 +74,25 @@ const SearchForm: React.FC<SearchFormProps> = ({
   }
 
   return (
-    <>
+    <section>
       {hasRecipes && (
-        <CTAText>
-          Looking for some good eats?
-          <br />
-          <br />
-          Go on and give the search a whirl.
-          <br />
-          <br />
-          You won't be disappointed.
-        </CTAText>
+        <Header>
+          <p>Looking for some good eats?</p>
+          <p>Go on and give the search a whirl.</p>
+          <p>You won't be disappointed.</p>
+        </Header>
       )}
-      <StyledForm onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           onChange={handleChange}
           placeholder="Enter ingredients"
           value={input}
         />
         <Button type="submit">
-          {isSearchPending ? <Spinner /> : <SearchIcon />}
+          {isSearchPending ? <Spinner width={24} /> : <SearchIcon />}
         </Button>
-      </StyledForm>
-    </>
+      </Form>
+    </section>
   );
 };
 

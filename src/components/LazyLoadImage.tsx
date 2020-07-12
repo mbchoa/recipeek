@@ -12,7 +12,7 @@ const observer = lozad();
 
 const Image = styled.img.attrs({ className: 'lozad' })`
   opacity: 0;
-  transition: opacity 1s;
+  transition: all 1s;
   &[data-loaded='true'] {
     opacity: 1;
   }

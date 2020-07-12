@@ -77,7 +77,7 @@ const NutritionOverlayLayout = styled.div`
   width: 100%;
 `;
 
-const Content = styled.section`
+const Content = styled.div`
   position: relative;
   :hover ${RecipeImage} {
     filter: blur(3px);

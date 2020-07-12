@@ -79,6 +79,10 @@ const SearchResults: React.FC<SearchResultsProps> = ({
     }
   }, [allRecipes]);
 
+  if (!allRecipes.length) {
+    return null;
+  }
+
   return (
     <Block>
       <SearchResultsList>

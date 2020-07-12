@@ -11,7 +11,11 @@ import SearchForm from './components/SearchForm';
 import SearchResults from './components/SearchResults';
 
 const Main = styled.main`
+  align-items: center;
+  display: flex;
   flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const App = () => (
