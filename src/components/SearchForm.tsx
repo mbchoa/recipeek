@@ -84,11 +84,12 @@ const SearchForm: React.FC<SearchFormProps> = ({
       )}
       <Form onSubmit={handleSubmit}>
         <Input
+          aria-label="Search"
           onChange={handleChange}
           placeholder="Enter ingredients"
           value={input}
         />
-        <Button type="submit">
+        <Button aria-label="Search" type="submit">
           {isSearchPending ? <Spinner width={24} /> : <SearchIcon />}
         </Button>
       </Form>
