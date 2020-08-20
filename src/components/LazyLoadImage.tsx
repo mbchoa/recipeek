@@ -8,7 +8,7 @@ type Props = {
   src: string;
 };
 
-const observer = lozad();
+const observer = lozad('.lozad', { rootMargin: '25%' });
 
 const Image = styled.img.attrs({ className: 'lozad' })`
   opacity: 0;
