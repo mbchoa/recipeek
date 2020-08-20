@@ -14,11 +14,11 @@ const Block = styled.a`
   color: black;
   display: block;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s;
   :hover {
-    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
-    transform: scale(1.01);
+    box-shadow: 0px 0px 40px 10px rgba(184, 184, 184, 1);
   }
+  overflow: hidden;
 `;
 
 const Header = styled.header`
@@ -60,7 +60,6 @@ const RecipeImage = styled(LazyLoadImage)`
   border-radius: 0 0 5px 5px;
   display: block;
   object-fit: cover;
-  transition: all 0.2s;
   width: 100%;
 `;
 
@@ -73,12 +72,13 @@ const NutritionOverlayLayout = styled.div`
   opacity: 0;
   position: absolute;
   top: 0;
-  transition: all 0.3s;
+  transition: all 0.2s;
   width: 100%;
 `;
 
 const Content = styled.div`
   position: relative;
+  transition: all 0.2s;
   :hover ${RecipeImage} {
     filter: blur(3px);
   }
