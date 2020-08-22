@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function useDarkMode() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const setMode = mode => {
     localStorage.setItem('theme', mode);
     setTheme(mode);
@@ -10,11 +10,6 @@ export default function useDarkMode() {
   function themeToggler() {
     theme === 'light' ? setMode('dark') : setMode('light');
   }
-
-  useEffect(() => {
-    const localTheme = localStorage.getItem('theme');
-    localTheme ? setTheme(localTheme) : setMode('light');
-  }, []);
 
   return [theme, themeToggler];
 }
