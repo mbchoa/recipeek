@@ -17,7 +17,7 @@ type Space = {
 /**
  * Creates a mapping of 'sp-X' units starting from the single 4px spacing up to 64px.
  */
-export const space: Space = [...Array(9).keys()].reduce(
+export default [...Array(9).keys()].reduce(
   (output, index) => ({
     ...output,
     [`sp-${(index + 1) * spacingUnit}`]: `${(index + 1) * spacingUnit}px`

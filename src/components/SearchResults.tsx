@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import space from '../enums/space';
 import { EdamamHit } from '../types/edamam';
 import { fetchMoreRecipes } from '../redux/actions';
 import { allRecipes, isFetchMoreRecipesPending } from '../redux/selectors';
 import { device } from '../enums/device';
-import { space } from '../enums/space';
 
 import SearchResultsItem from './SearchResultsItem';
 import Spinner from './Spinner';
@@ -113,7 +113,4 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = { fetchMoreRecipes };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchResults);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

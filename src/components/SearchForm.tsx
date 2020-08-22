@@ -3,23 +3,22 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import space from '../enums/space';
 import { search } from '../redux/actions';
-import { hasRecipes, isSearchPending } from '../redux/selectors';
-import { space } from '../enums/space';
+import { isSearchPending } from '../redux/selectors';
 import { size } from '../enums/typography';
 
-import { ReactComponent as SearchIcon } from '../assets/search-icon.svg';
+import Header from './Header';
 import Spinner from './Spinner';
 
-const Header = styled.header`
-  font-size: ${size['giga']};
-  margin: 0 0 ${space['sp-48']};
-  text-align: center;
+const Section = styled.section`
+  width: 100%;
 `;
 
 const Form = styled.form`
+  align-items: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   padding: ${space['sp-12']} 0;
 `;
 
@@ -27,24 +26,41 @@ const Input = styled.input`
   border: 2px solid #113f67;
   border-radius: 5px;
   font-size: 16px;
-  padding: 8px;
+  padding: ${space['sp-12']} ${space['sp-8']};
   transition: 0.25s;
+  width: calc(100% - ${space['sp-24']} * 2);
+  max-width: 400px;
 
   &:hover {
     border-color: #34699a;
   }
+
+  &::placeholder {
+    text-align: center;
+    transition: opacity 0.25s;
+  }
+
+  &:focus::placeholder {
+    opacity: 0.5;
+  }
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ isLoading: boolean }>`
   background-color: #113f67;
+  border: none;
   border-radius: 5px;
   color: white;
-  font-size: 16px;
-  margin-left: ${space['sp-8']};
+  cursor: pointer;
+  font-size: ${size['hecto']};
+  height: 40px;
+  letter-spacing: 1px;
+  margin-top: ${space['sp-36']};
   outline: none;
-  padding: ${space['sp-8']};
+  padding: ${props =>
+    props.isLoading ? 0 : `${space['sp-12']} ${space['sp-8']}`};
+  text-transform: uppercase;
   transition: 0.25s;
-  width: 48px;
+  width: 160px;
 
   &:hover {
     background-color: #34699a;
@@ -52,16 +68,11 @@ const Button = styled.button`
 `;
 
 type SearchFormProps = {
-  hasRecipes: boolean;
   isSearchPending: boolean;
   search: (input: string) => void;
 };
 
-const SearchForm: React.FC<SearchFormProps> = ({
-  hasRecipes,
-  isSearchPending,
-  search
-}) => {
+const SearchForm: React.FC<SearchFormProps> = ({ isSearchPending, search }) => {
   const [input, setInput] = useState('');
 
   function handleChange(e: any) {
@@ -74,35 +85,25 @@ const SearchForm: React.FC<SearchFormProps> = ({
   }
 
   return (
-    <section>
-      {hasRecipes && (
-        <Header>
-          <p>Looking for some good eats?</p>
-          <p>Go on and give the search a whirl.</p>
-          <p>You won't be disappointed.</p>
-        </Header>
-      )}
+    <Section>
+      <Header />
       <Form onSubmit={handleSubmit}>
         <Input
           aria-label="Search"
           onChange={handleChange}
-          placeholder="Enter ingredients"
+          placeholder="🍗      🍔      🧆      🍛"
           value={input}
         />
-        <Button aria-label="Search" type="submit">
-          {isSearchPending ? <Spinner width={24} /> : <SearchIcon />}
+        <Button type="submit" isLoading={isSearchPending}>
+          {isSearchPending ? <Spinner width={24} /> : 'Search'}
         </Button>
       </Form>
-    </section>
+    </Section>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  hasRecipes,
   isSearchPending
 });
 
-export default connect(
-  mapStateToProps,
-  { search }
-)(SearchForm);
+export default connect(mapStateToProps, { search })(SearchForm);

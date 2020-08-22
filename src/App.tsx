@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './redux/store';
 
 import Footer from './components/Footer';
-import Header from './components/Header';
 import SearchForm from './components/SearchForm';
 import SearchResults from './components/SearchResults';
 
@@ -21,7 +20,6 @@ const Main = styled.main`
 const App = () => (
   <BrowserRouter>
     <Provider store={store}>
-      <Header />
       <Main>
         <Switch>
           <Route exact path="/">

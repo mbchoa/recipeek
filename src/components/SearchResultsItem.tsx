@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import space from '../enums/space';
 import { EdamamRecipe } from '../types/edamam';
 import { titleCase } from '../utils';
-import { space } from '../enums/space';
 
 import LazyLoadImage from './LazyLoadImage';
 import NutritionOverlay from './NutritionOverlay';
