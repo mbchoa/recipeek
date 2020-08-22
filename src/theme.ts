@@ -8,7 +8,7 @@ export type Theme = {
 };
 
 export const lightTheme: Theme = {
-  body: '#fff',
+  body: '#D8BFAA',
   buttonBgColor: '#113f67',
   buttonBorder: '2px solid #113f67',
   primary: '#113f67',

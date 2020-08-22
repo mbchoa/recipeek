@@ -9,7 +9,7 @@ import LazyLoadImage from './LazyLoadImage';
 import NutritionOverlay from './NutritionOverlay';
 
 const Block = styled.a`
-  border: 1px solid #dcdcdc;
+  background-color: white;
   border-radius: 5px;
   color: black;
   display: block;
