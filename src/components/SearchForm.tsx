@@ -94,7 +94,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ isSearchPending, search }) => {
         <Input
           aria-label="Search"
           onChange={handleChange}
-          placeholder="🍗      🍔      🧆      🍛"
+          placeholder="🍗      🍔      🍣      🍛"
           value={input}
         />
         <Button type="submit" isLoading={isSearchPending}>
@@ -109,4 +109,7 @@ const mapStateToProps = createStructuredSelector({
   isSearchPending
 });
 
-export default connect(mapStateToProps, { search })(SearchForm);
+export default connect(
+  mapStateToProps,
+  { search }
+)(SearchForm);
