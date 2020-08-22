@@ -1,4 +1,4 @@
-# recipeek [![Netlify Status](https://api.netlify.com/api/v1/badges/28f46ad0-bcba-4979-a39e-4d005b9718a1/deploy-status)](https://app.netlify.com/sites/recipeeek/deploys)
+# 🍽️ recipeek [![Netlify Status](https://api.netlify.com/api/v1/badges/28f46ad0-bcba-4979-a39e-4d005b9718a1/deploy-status)](https://app.netlify.com/sites/recipeeek/deploys)
 Simple recipe discovery app using [Edamam Recipe Search API](https://developer.edamam.com/).
 
 ## Overview
