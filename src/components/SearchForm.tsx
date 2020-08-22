@@ -23,8 +23,10 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  border: 2px solid #113f67;
+  background-color: ${({ theme }) => theme.secondary};
+  border: 2px solid ${({ theme }) => theme.primary};
   border-radius: 5px;
+  color: ${({ theme }) => theme.primary};
   font-size: 16px;
   padding: ${space['sp-12']} ${space['sp-8']};
   transition: 0.25s;
@@ -46,13 +48,13 @@ const Input = styled.input`
 `;
 
 const Button = styled.button<{ isLoading: boolean }>`
-  background-color: #113f67;
-  border: none;
+  background-color: ${({ theme }) => theme.buttonBgColor};
+  border: ${({ theme }) => theme.buttonBorder};
   border-radius: 5px;
   color: white;
   cursor: pointer;
   font-size: ${size['hecto']};
-  height: 40px;
+  height: 44px;
   letter-spacing: 1px;
   margin-top: ${space['sp-36']};
   outline: none;
@@ -64,6 +66,7 @@ const Button = styled.button<{ isLoading: boolean }>`
 
   &:hover {
     background-color: #34699a;
+    border-color: #34699a;
   }
 `;
 

@@ -6,10 +6,11 @@ import { size } from '../enums/typography';
 
 const StyledHeader = styled.header`
   align-items: center;
-  color: #113f67;
+  color: ${({ theme }) => theme.primary};
   font-size: ${size['bronto']};
   font-weight: 600;
   text-align: center;
+  transition: ${({ theme }) => theme.transition};
 `;
 
 const Heading = styled.h1`
