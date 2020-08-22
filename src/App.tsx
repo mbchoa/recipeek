@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -7,7 +7,7 @@ import store from './redux/store';
 
 import Footer from './components/Footer';
 import SearchForm from './components/SearchForm';
-import SearchResults from './components/SearchResults';
+import SearchResultsController from './components/SearchResultsController';
 
 const Main = styled.main`
   align-items: center;
@@ -24,7 +24,7 @@ const App = () => (
         <Switch>
           <Route exact path="/">
             <SearchForm />
-            <SearchResults />
+            <SearchResultsController />
           </Route>
         </Switch>
       </Main>
