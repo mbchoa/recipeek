@@ -27,28 +27,30 @@ const NutritionOverlay: React.FC<Props> = ({
   totalNutrients
 }) => (
   <Table>
-    <tr>
-      <td>Calories</td>
-      <td>{Math.round(calories)}</td>
-    </tr>
-    {DISPLAYED_NUTRIENTS.map(nutrientCode => {
-      const { label, quantity, unit } = totalNutrients[
-        nutrientCode
-      ] as EdamamNutrientInfo;
-      return (
-        <tr key={nutrientCode}>
-          <td>{label}</td>
-          <td>
-            {Math.round(quantity / numServings)}
-            {unit}
-          </td>
-        </tr>
-      );
-    })}
-    <tr>
-      <td>Servings</td>
-      <td>{numServings}</td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>Calories</td>
+        <td>{Math.round(calories)}</td>
+      </tr>
+      {DISPLAYED_NUTRIENTS.map(nutrientCode => {
+        const { label, quantity, unit } = totalNutrients[
+          nutrientCode
+        ] as EdamamNutrientInfo;
+        return (
+          <tr key={nutrientCode}>
+            <td>{label}</td>
+            <td>
+              {Math.round(quantity / numServings)}
+              {unit}
+            </td>
+          </tr>
+        );
+      })}
+      <tr>
+        <td>Servings</td>
+        <td>{numServings}</td>
+      </tr>
+    </tbody>
   </Table>
 );
 

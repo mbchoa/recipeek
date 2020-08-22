@@ -40,6 +40,12 @@ const RecipeAuthor = styled.p`
   margin: 0;
 `;
 
+const Content = styled.div`
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s;
+`;
+
 const Frame = styled.figure`
   background-color: gray;
   display: block;
@@ -63,6 +69,10 @@ const RecipeImage = styled(LazyLoadImage)`
   display: block;
   object-fit: cover;
   width: 100%;
+
+  ${Block}:hover & {
+    filter: blur(3px);
+  }
 `;
 
 const NutritionOverlayLayout = styled.div`
@@ -76,15 +86,8 @@ const NutritionOverlayLayout = styled.div`
   top: 0;
   transition: all 0.2s;
   width: 100%;
-`;
 
-const Content = styled.div`
-  position: relative;
-  transition: all 0.2s;
-  :hover ${RecipeImage} {
-    filter: blur(3px);
-  }
-  :hover ${NutritionOverlayLayout} {
+  ${Block}:hover & {
     opacity: 1;
   }
 `;
