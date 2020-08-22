@@ -13,12 +13,14 @@ const Block = styled.a`
   border-radius: 5px;
   color: black;
   display: block;
+  overflow: hidden;
   text-decoration: none;
   transition: all 0.2s;
+
   :hover {
-    box-shadow: 0px 0px 40px 10px rgba(184, 184, 184, 1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 26px,
+      rgba(0, 0, 0, 0.08) 0px 2px 8px;
   }
-  overflow: hidden;
 `;
 
 const Header = styled.header`
