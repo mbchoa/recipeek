@@ -27,7 +27,7 @@ export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SEARCH:
       return {
-        ...INITIAL_STATE,
+        ...state,
         currentSearchQuery: action.payload.toLowerCase()
       };
     case SEARCH_PENDING:
