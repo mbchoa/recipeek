@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -57,6 +57,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   const lastItemRef: React.RefObject<HTMLAnchorElement> = useRef<
     HTMLAnchorElement
   >(null);
+  const themeContext = useContext(ThemeContext);
+
   const observer = useRef(
     new IntersectionObserver(
       ([entry]) => {
@@ -101,7 +103,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         )}
       </SearchResultsList>
       <SpinnerContainer>
-        {isFetchMoreRecipesPending && <Spinner color="#113f67" width={50} />}
+        {isFetchMoreRecipesPending && (
+          <Spinner color={themeContext.primary} width={50} />
+        )}
       </SpinnerContainer>
     </Block>
   );
