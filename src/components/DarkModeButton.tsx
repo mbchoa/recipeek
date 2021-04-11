@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import space from '../enums/space';
@@ -34,7 +34,7 @@ const Button = styled.button`
 `;
 
 const DarkModeButton: React.FC<DarkModeButtonProps> = ({ onClick }) => (
-  <Button onClick={onClick}>
+  <Button onClick={onClick} aria-label="Toggle Darkmode">
     <DarkModeIcon />
   </Button>
 );

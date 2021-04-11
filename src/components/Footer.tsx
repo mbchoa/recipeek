@@ -10,20 +10,31 @@ const Block = styled.footer`
   display: flex;
   justify-content: center;
   flex-shrink: 0;
+  font-size: 14px;
   height: 75px;
   padding: ${space['sp-16']};
 `;
 
 const Link = styled.a`
+  color: inherit;
   text-decoration: none;
+  :hover,
   :visited {
-    color: white;
+    color: inherit;
   }
 `;
 
 const Footer = () => (
   <Block>
-    ©&nbsp;<Link href="https://github.com/mbchoa">mbchoa</Link>&nbsp;2020
+    ©&nbsp;
+    <Link
+      href="https://github.com/mbchoa"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      mbchoa
+    </Link>
+    &nbsp;2020
   </Block>
 );
 
