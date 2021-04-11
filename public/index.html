@@ -24,6 +24,13 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Find your recipes | recipeek</title>
+    <script>
+      // The NODE_ENV environment variable will be injected during compile time to the
+      // correct string value
+      if ('%NODE_ENV%' === 'production' && typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+        window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {}
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
